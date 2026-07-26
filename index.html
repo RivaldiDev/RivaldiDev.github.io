@@ -1,140 +1,96 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rivaldi — Vibecoder · AI Agentic · Web3</title>
-  <meta name="description" content="Rivaldi — Vibecoder, Full AI Agentic developer and Web3 enthusiast. Shipping onchain dashboards, AI-curated tools and agent-built software.">
-  <meta name="theme-color" content="#05060a">
+  <meta name="description" content="Rivaldi — vibecoder, developer AI agentic, dan penggemar Web3. Membangun dasbor onchain, alat berbasis AI, dan perangkat lunak bersama agen.">
+  <meta name="theme-color" content="#faf8f4">
 
   <meta property="og:title" content="Rivaldi — Vibecoder · AI Agentic · Web3">
-  <meta property="og:description" content="Agent-built software, onchain dashboards and pure vibes. Live from the GitHub API.">
+  <meta property="og:description" content="Perangkat lunak yang dibangun bersama agen AI, dasbor onchain, dan eksperimen web.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rivaldidev.github.io/">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/57316177?v=4">
   <meta name="twitter:card" content="summary">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2305060a'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%2322d3ee' font-family='monospace'%3E%E2%9D%AF_%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%2317150f'/%3E%3Ctext x='50' y='70' font-size='56' text-anchor='middle' fill='%23faf8f4' font-family='Georgia,serif'%3ER%3C/text%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-  <canvas id="net" aria-hidden="true"></canvas>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="aurora" aria-hidden="true"></div>
-
   <nav class="nav">
-    <a class="nav__brand" href="#top">
-      <span class="nav__prompt">❯</span> rivaldi<span class="accent">.dev</span><span class="cursor">▊</span>
-    </a>
+    <a class="nav__brand" href="#top">Rivaldi</a>
     <div class="nav__links">
-      <a href="#about">about</a>
-      <a href="#projects">projects</a>
-      <a href="#terminal">terminal</a>
-      <a href="#contact">contact</a>
+      <a href="#about" data-i18n="nav.about">Tentang</a>
+      <a href="#projects" data-i18n="nav.projects">Proyek</a>
+      <a href="#terminal">Terminal</a>
+      <a href="#contact" data-i18n="nav.contact">Kontak</a>
     </div>
-    <button class="nav__cmdk" id="cmdk-btn" title="Command palette">
-      <kbd>Ctrl</kbd><kbd>K</kbd>
-    </button>
+    <div class="nav__tools">
+      <button class="lang-toggle mono" id="lang-toggle" title="Switch language">EN</button>
+      <button class="nav__cmdk mono" id="cmdk-btn" title="Command palette (Ctrl+K)">⌘K</button>
+    </div>
   </nav>
 
   <!-- ============ HERO ============ -->
   <header class="hero" id="top">
-    <div class="hero__copy">
-      <p class="eyebrow reveal"><span class="dot dot--live"></span> AGENT ONLINE · PORTFOLIO v2.0</p>
-      <h1 class="hero__title reveal">
-        I don't just write code.<br>
-        I <span class="gradient-text">orchestrate</span> it.
-      </h1>
-      <p class="hero__role reveal">
-        <span class="mono accent">$ whoami →</span>
-        <span id="role-type" class="mono"></span><span class="cursor">▊</span>
-      </p>
-      <p class="hero__lead reveal">
-        Hi, I'm <strong>Rivaldi</strong> — a vibecoder from Indonesia shipping software with
-        AI agents as my co-pilots. Onchain dashboards, AI-curated tools, and experiments
-        that live at the intersection of <em>agents</em> and <em>Ethereum</em>.
-      </p>
-      <div class="hero__cta reveal">
-        <a class="btn btn--primary" href="#projects">⌁ View shipped work</a>
-        <a class="btn btn--ghost" href="#terminal">❯ Open terminal</a>
-      </div>
-      <div class="hero__stats reveal" id="gh-stats">
-        <div class="stat"><span class="stat__num" data-stat="repos">—</span><span class="stat__label">public repos</span></div>
-        <div class="stat"><span class="stat__num" data-stat="followers">—</span><span class="stat__label">followers</span></div>
-        <div class="stat"><span class="stat__num" data-stat="years">—</span><span class="stat__label">years on GitHub</span></div>
-      </div>
-    </div>
-
-    <div class="hero__term reveal">
-      <div class="term">
-        <div class="term__bar">
-          <span class="term__dot" style="--c:#ff5f57"></span>
-          <span class="term__dot" style="--c:#febc2e"></span>
-          <span class="term__dot" style="--c:#28c840"></span>
-          <span class="term__title mono">rivaldi@agent-core: ~/init</span>
-        </div>
-        <pre class="term__body mono" id="boot-seq" aria-label="agent boot sequence"></pre>
-      </div>
+    <p class="eyebrow mono reveal" data-i18n="hero.eyebrow">Portofolio</p>
+    <h1 class="hero__title reveal" data-i18n="hero.title">Saya tidak sekadar menulis kode.<br>Saya <em>mengorkestrasi</em>nya.</h1>
+    <p class="hero__role mono reveal">vibecoder · full AI agentic · web3 enthusiast</p>
+    <p class="hero__lead reveal" data-i18n="hero.lead">
+      Halo, saya <strong>Rivaldi</strong> — developer dari Indonesia yang membangun
+      perangkat lunak bersama agen AI. Dasbor onchain, alat berbasis AI, dan eksperimen
+      di persimpangan antara agen dan Ethereum.
+    </p>
+    <div class="hero__cta reveal">
+      <a class="link-btn" href="#projects" data-i18n="hero.cta1">Lihat proyek ↓</a>
+      <a class="link-btn link-btn--dim" href="#terminal" data-i18n="hero.cta2">Buka terminal →</a>
     </div>
   </header>
 
-  <!-- ============ TICKER ============ -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker__track">
-      <span>TYPESCRIPT</span><span>◆</span><span>SOLIDITY</span><span>◆</span><span>CLAUDE AGENTS</span><span>◆</span><span>ETHEREUM</span><span>◆</span><span>NEXT.JS</span><span>◆</span><span>MCP</span><span>◆</span><span>DEFI</span><span>◆</span><span>PROMPT ENGINEERING</span><span>◆</span><span>BASE</span><span>◆</span><span>VIBECODING</span><span>◆</span>
-      <span>TYPESCRIPT</span><span>◆</span><span>SOLIDITY</span><span>◆</span><span>CLAUDE AGENTS</span><span>◆</span><span>ETHEREUM</span><span>◆</span><span>NEXT.JS</span><span>◆</span><span>MCP</span><span>◆</span><span>DEFI</span><span>◆</span><span>PROMPT ENGINEERING</span><span>◆</span><span>BASE</span><span>◆</span><span>VIBECODING</span><span>◆</span>
-    </div>
-  </div>
-
   <!-- ============ ABOUT ============ -->
   <section class="section" id="about">
-    <p class="section__index mono reveal">01 / IDENTITY</p>
-    <h2 class="section__title reveal">Three modes. One <span class="gradient-text">operator</span>.</h2>
-    <div class="cards">
-      <article class="card reveal">
-        <div class="card__icon">〜</div>
+    <p class="section__index mono reveal" data-i18n="about.index">01 — Identitas</p>
+    <h2 class="section__title reveal" data-i18n="about.title">Tiga mode. Satu operator.</h2>
+    <div class="modes">
+      <article class="mode reveal">
+        <p class="mode__num mono">01</p>
         <h3>Vibecoder</h3>
-        <p>Taste over boilerplate. I describe the destination, curate the output, and polish
-        until it feels right. Speed of thought → speed of shipping. The prompt is the new IDE.</p>
-        <p class="card__tag mono">// intuition-driven development</p>
+        <p data-i18n="mode1.body">Selera di atas boilerplate. Saya menentukan arah, mengkurasi hasil,
+        dan memolesnya sampai terasa tepat. Kecepatan berpikir menjadi kecepatan merilis.</p>
       </article>
-      <article class="card reveal">
-        <div class="card__icon">⬡</div>
+      <article class="mode reveal">
+        <p class="mode__num mono">02</p>
         <h3>Full AI Agentic</h3>
-        <p>My workflow is a fleet: agents that research, write, review and deploy while I
-        direct. Claude-powered pipelines, MCP tooling, autonomous loops — human intent,
-        machine execution.</p>
-        <p class="card__tag mono">// orchestrator &gt; operator</p>
+        <p data-i18n="mode2.body">Alur kerja saya adalah armada agen: meriset, menulis, mereview,
+        dan men-deploy sementara saya mengarahkan. Niat manusia, eksekusi mesin.</p>
       </article>
-      <article class="card reveal">
-        <div class="card__icon">Ξ</div>
+      <article class="mode reveal">
+        <p class="mode__num mono">03</p>
         <h3>Web3 Enthusiast</h3>
-        <p>Building where value is programmable. DeFi analytics, blockchain explorers,
-        NFT tooling, market-sentiment trackers — reading the chain and turning it into
-        interfaces people actually use.</p>
-        <p class="card__tag mono">// gm. wagmi.</p>
+        <p data-i18n="mode3.body">Membangun di tempat nilai bisa diprogram. Analitik DeFi, blockchain
+        explorer, dan perkakas NFT — membaca chain dan mengubahnya menjadi antarmuka yang berguna.</p>
       </article>
     </div>
   </section>
 
   <!-- ============ PROJECTS ============ -->
   <section class="section" id="projects">
-    <p class="section__index mono reveal">02 / SHIPPED</p>
-    <h2 class="section__title reveal">Live from the <span class="gradient-text">GitHub API</span></h2>
-    <p class="section__sub reveal mono">This grid renders itself from <a href="https://api.github.com/users/RivaldiDev/repos" target="_blank" rel="noopener">api.github.com</a> at page load — always current, zero maintenance.</p>
-    <div class="filters reveal" id="filters" role="tablist">
-      <button class="chip is-active" data-filter="all">all</button>
-      <button class="chip" data-filter="web3">web3</button>
-      <button class="chip" data-filter="ai">ai</button>
-      <button class="chip" data-filter="web">web</button>
+    <p class="section__index mono reveal" data-i18n="projects.index">02 — Karya</p>
+    <h2 class="section__title reveal" data-i18n="projects.title">Langsung dari GitHub</h2>
+    <p class="section__sub reveal" data-i18n="projects.sub">Daftar ini dirender dari API GitHub setiap kali halaman dimuat — selalu terbaru, tanpa perawatan.</p>
+    <div class="filters reveal" id="filters">
+      <button class="chip mono is-active" data-filter="all" data-i18n="filter.all">semua</button>
+      <button class="chip mono" data-filter="web3">web3</button>
+      <button class="chip mono" data-filter="ai">ai</button>
+      <button class="chip mono" data-filter="web">web</button>
     </div>
     <div class="grid" id="projects-grid" aria-live="polite">
-      <!-- skeletons replaced by JS -->
       <div class="proj proj--skeleton"></div>
       <div class="proj proj--skeleton"></div>
       <div class="proj proj--skeleton"></div>
@@ -146,19 +102,14 @@
 
   <!-- ============ TERMINAL ============ -->
   <section class="section" id="terminal">
-    <p class="section__index mono reveal">03 / PLAYGROUND</p>
-    <h2 class="section__title reveal">Talk to the <span class="gradient-text">machine</span></h2>
-    <p class="section__sub reveal mono">An actual shell. Try <code>help</code>, <code>projects</code>, <code>stack</code> or <code>gm</code>.</p>
-    <div class="term term--interactive reveal">
-      <div class="term__bar">
-        <span class="term__dot" style="--c:#ff5f57"></span>
-        <span class="term__dot" style="--c:#febc2e"></span>
-        <span class="term__dot" style="--c:#28c840"></span>
-        <span class="term__title mono">visitor@rivaldi.dev: ~</span>
-      </div>
+    <p class="section__index mono reveal" data-i18n="terminal.index">03 — Interaktif</p>
+    <h2 class="section__title reveal" data-i18n="terminal.title">Bicara dengan mesin</h2>
+    <p class="section__sub reveal" data-i18n="terminal.sub">Shell sungguhan. Coba <code>help</code>, <code>projects</code>, atau <code>stack</code>.</p>
+    <div class="term reveal">
+      <div class="term__bar mono"><span data-i18n="terminal.win">rivaldi.dev — terminal</span></div>
       <div class="term__body mono" id="shell-out"></div>
       <div class="term__input mono">
-        <label for="shell-in" class="accent">visitor@rivaldi.dev:~$</label>
+        <label for="shell-in">$</label>
         <input id="shell-in" type="text" autocomplete="off" spellcheck="false" aria-label="terminal input">
       </div>
     </div>
@@ -166,27 +117,25 @@
 
   <!-- ============ CONTACT ============ -->
   <section class="section section--contact" id="contact">
-    <p class="section__index mono reveal">04 / HANDSHAKE</p>
-    <h2 class="section__title section__title--big reveal">
-      Got an idea?<br><span class="gradient-text">Let's ship it.</span>
-    </h2>
-    <p class="section__sub reveal">Open to collabs, freelance builds and interesting onchain experiments.</p>
+    <p class="section__index mono reveal" data-i18n="contact.index">04 — Kontak</p>
+    <h2 class="section__title section__title--big reveal" data-i18n="contact.title">Punya ide?<br><em>Mari kita wujudkan.</em></h2>
+    <p class="section__sub reveal" data-i18n="contact.sub">Terbuka untuk kolaborasi, proyek lepas, dan eksperimen onchain yang menarik.</p>
     <div class="hero__cta reveal">
-      <a class="btn btn--primary" href="mailto:ripaldialdo001@gmail.com">✉ ripaldialdo001@gmail.com</a>
-      <a class="btn btn--ghost" href="https://github.com/RivaldiDev" target="_blank" rel="noopener">⌥ github.com/RivaldiDev</a>
+      <a class="link-btn" href="mailto:ripaldialdo001@gmail.com">ripaldialdo001@gmail.com</a>
+      <a class="link-btn link-btn--dim" href="https://github.com/RivaldiDev" target="_blank" rel="noopener">github.com/RivaldiDev</a>
     </div>
   </section>
 
   <footer class="footer mono">
-    <span>© <span id="year"></span> Rivaldi · designed &amp; engineered with AI agents</span>
-    <span class="footer__meta">no framework · no build step · just GitHub Pages + vibes</span>
+    <span data-i18n="footer.left">© <span id="year"></span> Rivaldi · dirancang &amp; dibangun bersama agen AI</span>
+    <span data-i18n="footer.right">tanpa framework · tanpa build step · GitHub Pages</span>
   </footer>
 
   <!-- ============ COMMAND PALETTE ============ -->
   <dialog class="palette" id="palette">
-    <input class="palette__input mono" id="palette-input" type="text" placeholder="Type a command…" autocomplete="off" spellcheck="false">
+    <input class="palette__input mono" id="palette-input" type="text" placeholder="Ketik perintah…" autocomplete="off" spellcheck="false">
     <ul class="palette__list mono" id="palette-list"></ul>
-    <p class="palette__hint mono">↑↓ navigate · ⏎ run · esc close</p>
+    <p class="palette__hint mono" data-i18n="palette.hint">↑↓ navigasi · ⏎ jalankan · esc tutup</p>
   </dialog>
 
   <script src="assets/app.js" defer></script>
