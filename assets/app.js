@@ -186,6 +186,158 @@ $("#lang-toggle").addEventListener("click", () => {
   else requestAnimationFrame(loop);
 })();
 
+/* ---------- 2b. ascii gaze portrait ---------- */
+
+(() => {
+  const canvas = $("#face");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const RAMP = " ·.:-~=+*x#@";
+  const COLS = 42, ROWS = 34, CW = 8, CH = 13;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const W = COLS * CW, H = ROWS * CH;
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.font = `${CH - 2}px "JetBrains Mono", monospace`;
+  ctx.textBaseline = "top";
+
+  const gaze = { x: 0, y: 0.1, tx: 0, ty: 0.1 };
+  let blinkUntil = 0, nextBlink = 2500;
+  let glitchUntil = 0, nextGlitch = 3500;
+  let glitchRows = [];
+
+  const hash = (x, y) => {
+    const s = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
+    return s - Math.floor(s);
+  };
+
+  // procedural male portrait: intensity 0..1 at normalized (u, v)
+  // u ∈ [-1.7, 1.7] across, v ∈ [-1.15, 1.95] top→bottom
+  const shade = (u, v, blink) => {
+    let i = 0;
+    const he = (u * u) / 0.62 + ((v - 0.02) * (v - 0.02)) / 0.85;
+    if (he <= 1) {
+      i = 0.2 + Math.max(0, he - 0.5) * 0.4;
+      const hairline = -0.3 + 0.05 * Math.sin(u * 8.5) + 0.12 * u * u;
+      if (v < hairline) i = 0.72 + hash((u * 40) | 0, (v * 40) | 0) * 0.25;
+      if (v > 0.32 && he > 0.62 && hash((u * 50) | 0, (v * 50) | 0) > 0.55) i += 0.18;
+      if (Math.abs(v + 0.185 - 0.04 * Math.cos(u * 5)) < 0.035 && Math.abs(Math.abs(u) - 0.33) < 0.17) i = 0.8;
+      for (const s of [-1, 1]) {
+        const du = u - s * 0.33, dv = v + 0.05;
+        const socket = (du * du) / 0.026 + (dv * dv) / 0.011;
+        if (socket <= 1) {
+          if (blink) {
+            i = Math.abs(dv) < 0.014 ? 0.75 : 0.2;
+          } else {
+            i = 0.03;
+            const dp = Math.hypot(du - gaze.x * 0.075, dv - gaze.y * 0.03);
+            if (dp < 0.068) i = 1;
+          }
+        }
+      }
+      if (Math.abs(u + 0.012 * Math.sin(v * 8)) < 0.018 && v > 0 && v < 0.3) i = Math.max(i, 0.42);
+      if (Math.abs(v - 0.33) < 0.04 && Math.abs(u) < 0.085) i = Math.max(i, 0.5);
+      if (Math.abs(v - 0.55 + 0.02 * Math.cos(u * 5)) < 0.05 && Math.abs(u) < 0.26) i = 0.62;
+    } else {
+      if (Math.abs(u) < 0.26 && v > 0.72 && v < 1.42) i = 0.3 + (Math.abs(u) > 0.18 ? 0.15 : 0);
+      if (v > 1.34 + 0.2 * Math.abs(u) && Math.abs(u) < 1.62) {
+        i = 0.55;
+        if (Math.abs(u) < 0.3 && v < 1.55) i = 0.25;
+      }
+    }
+    return Math.min(1, i);
+  };
+
+  const draw = (now) => {
+    const blink = now < blinkUntil;
+    const glitch = now < glitchUntil;
+    ctx.clearRect(0, 0, W, H);
+    for (let y = 0; y < ROWS; y++) {
+      let xShift = 0, corrupt = false;
+      if (glitch && glitchRows.includes(y)) {
+        xShift = ((hash(y, now | 0) * 5) | 0) - 2;
+        corrupt = true;
+      }
+      const v = (y / ROWS) * 3.1 - 1.15;
+      for (let x = 0; x < COLS; x++) {
+        const u = ((x / COLS) * 2 - 1) * 1.7;
+        const ii = shade(u, v, blink);
+        if (ii <= 0.02) continue;
+        let ch = RAMP[(ii * (RAMP.length - 1)) | 0];
+        if (corrupt && hash(x, y + (now | 0)) > 0.6) ch = "#";
+        ctx.fillStyle = `rgba(25, 23, 18, ${0.12 + ii * 0.78})`;
+        ctx.fillText(ch, (x + xShift) * CW, y * CH);
+      }
+    }
+  };
+
+  let last = 0;
+  const loop = (ms) => {
+    if (ms - last > 66) { // ~15fps
+      last = ms;
+      gaze.x += (gaze.tx - gaze.x) * 0.18;
+      gaze.y += (gaze.ty - gaze.y) * 0.18;
+      if (ms > nextBlink) { blinkUntil = ms + 140; nextBlink = ms + 2600 + Math.random() * 4000; }
+      if (ms > nextGlitch) {
+        glitchUntil = ms + 160;
+        glitchRows = Array.from({ length: 3 }, () => (Math.random() * ROWS) | 0);
+        nextGlitch = ms + 3800 + Math.random() * 5200;
+      }
+      draw(ms);
+    }
+    requestAnimationFrame(loop);
+  };
+
+  addEventListener("pointermove", (e) => {
+    const b = canvas.getBoundingClientRect();
+    const cx = b.left + b.width / 2, cy = b.top + b.height * 0.3;
+    gaze.tx = Math.max(-1, Math.min(1, (e.clientX - cx) / 400));
+    gaze.ty = Math.max(-1, Math.min(1, (e.clientY - cy) / 400));
+  });
+
+  if (reduced) draw(0);
+  else requestAnimationFrame(loop);
+})();
+
+/* ---------- 2c. text scramble rotator ---------- */
+
+(() => {
+  const el = $("#role-scramble");
+  if (!el) return;
+  const ROLES = ["vibecoder", "full AI agentic", "web3 enthusiast", "onchain builder"];
+  const GLYPHS = "!<>-_\\/[]{}=+*^?#";
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let idx = 0;
+
+  const scrambleTo = (text) => {
+    const from = el.textContent;
+    const len = Math.max(from.length, text.length);
+    const start = performance.now(), dur = 700;
+    const seed = Array.from({ length: len }, () => Math.random());
+    const tick = (now) => {
+      const p = Math.min(1, (now - start) / dur);
+      let s = "";
+      for (let i = 0; i < len; i++) {
+        const reveal = (i / len) * 0.7 + seed[i] * 0.3;
+        if (p >= reveal) s += text[i] || "";
+        else if (p > reveal - 0.3) s += GLYPHS[(Math.random() * GLYPHS.length) | 0];
+        else s += from[i] || "";
+      }
+      el.textContent = s;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = text;
+    };
+    requestAnimationFrame(tick);
+  };
+
+  setInterval(() => {
+    idx = (idx + 1) % ROLES.length;
+    scrambleTo(ROLES[idx]);
+  }, 3400);
+})();
+
 /* ---------- 3. GitHub API: projects ---------- */
 
 const classify = (repo) => {

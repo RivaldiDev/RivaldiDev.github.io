@@ -39,17 +39,22 @@
 
   <!-- ============ HERO ============ -->
   <header class="hero" id="top">
-    <p class="eyebrow mono reveal" data-i18n="hero.eyebrow">Portofolio</p>
-    <h1 class="hero__title reveal" data-i18n="hero.title">Saya tidak sekadar menulis kode.<br>Saya <em>mengorkestrasi</em>nya.</h1>
-    <p class="hero__role mono reveal">vibecoder · full AI agentic · web3 enthusiast</p>
-    <p class="hero__lead reveal" data-i18n="hero.lead">
-      Halo, saya <strong>Rivaldi</strong> — developer dari Indonesia yang membangun
-      perangkat lunak bersama agen AI. Dasbor onchain, alat berbasis AI, dan eksperimen
-      di persimpangan antara agen dan Ethereum.
-    </p>
-    <div class="hero__cta reveal">
-      <a class="link-btn" href="#projects" data-i18n="hero.cta1">Lihat proyek ↓</a>
-      <a class="link-btn link-btn--dim" href="#terminal" data-i18n="hero.cta2">Buka terminal →</a>
+    <div class="hero__copy">
+      <p class="eyebrow mono reveal" data-i18n="hero.eyebrow">Portofolio</p>
+      <h1 class="hero__title reveal" data-i18n="hero.title">Saya tidak sekadar menulis kode.<br>Saya <em>mengorkestrasi</em>nya.</h1>
+      <p class="hero__role mono reveal"><span id="role-scramble">vibecoder</span><span class="scr-cursor">▊</span></p>
+      <p class="hero__lead reveal" data-i18n="hero.lead">
+        Halo, saya <strong>Rivaldi</strong> — developer dari Indonesia yang membangun
+        perangkat lunak bersama agen AI. Dasbor onchain, alat berbasis AI, dan eksperimen
+        di persimpangan antara agen dan Ethereum.
+      </p>
+      <div class="hero__cta reveal">
+        <a class="link-btn" href="#projects" data-i18n="hero.cta1">Lihat proyek ↓</a>
+        <a class="link-btn link-btn--dim" href="#terminal" data-i18n="hero.cta2">Buka terminal →</a>
+      </div>
+    </div>
+    <div class="hero__face reveal" aria-hidden="true">
+      <canvas id="face"></canvas>
     </div>
   </header>
 
