@@ -1,178 +1,194 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rivaldi — Vibecoder · AI Agentic · Web3</title>
+  <meta name="description" content="Rivaldi — Vibecoder, Full AI Agentic developer and Web3 enthusiast. Shipping onchain dashboards, AI-curated tools and agent-built software.">
+  <meta name="theme-color" content="#05060a">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <meta property="og:title" content="Rivaldi — Vibecoder · AI Agentic · Web3">
+  <meta property="og:description" content="Agent-built software, onchain dashboards and pure vibes. Live from the GitHub API.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rivaldidev.github.io/">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/57316177?v=4">
+  <meta name="twitter:card" content="summary">
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Rivaldi</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="facebook.com">Facebook</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2305060a'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%2322d3ee' font-family='monospace'%3E%E2%9D%AF_%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"></div>
+
+  <nav class="nav">
+    <a class="nav__brand" href="#top">
+      <span class="nav__prompt">❯</span> rivaldi<span class="accent">.dev</span><span class="cursor">▊</span>
+    </a>
+    <div class="nav__links">
+      <a href="#about">about</a>
+      <a href="#projects">projects</a>
+      <a href="#terminal">terminal</a>
+      <a href="#contact">contact</a>
+    </div>
+    <button class="nav__cmdk" id="cmdk-btn" title="Command palette">
+      <kbd>Ctrl</kbd><kbd>K</kbd>
+    </button>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <div class="hero__copy">
+      <p class="eyebrow reveal"><span class="dot dot--live"></span> AGENT ONLINE · PORTFOLIO v2.0</p>
+      <h1 class="hero__title reveal">
+        I don't just write code.<br>
+        I <span class="gradient-text">orchestrate</span> it.
+      </h1>
+      <p class="hero__role reveal">
+        <span class="mono accent">$ whoami →</span>
+        <span id="role-type" class="mono"></span><span class="cursor">▊</span>
+      </p>
+      <p class="hero__lead reveal">
+        Hi, I'm <strong>Rivaldi</strong> — a vibecoder from Indonesia shipping software with
+        AI agents as my co-pilots. Onchain dashboards, AI-curated tools, and experiments
+        that live at the intersection of <em>agents</em> and <em>Ethereum</em>.
+      </p>
+      <div class="hero__cta reveal">
+        <a class="btn btn--primary" href="#projects">⌁ View shipped work</a>
+        <a class="btn btn--ghost" href="#terminal">❯ Open terminal</a>
+      </div>
+      <div class="hero__stats reveal" id="gh-stats">
+        <div class="stat"><span class="stat__num" data-stat="repos">—</span><span class="stat__label">public repos</span></div>
+        <div class="stat"><span class="stat__num" data-stat="followers">—</span><span class="stat__label">followers</span></div>
+        <div class="stat"><span class="stat__num" data-stat="years">—</span><span class="stat__label">years on GitHub</span></div>
+      </div>
+    </div>
+
+    <div class="hero__term reveal">
+      <div class="term">
+        <div class="term__bar">
+          <span class="term__dot" style="--c:#ff5f57"></span>
+          <span class="term__dot" style="--c:#febc2e"></span>
+          <span class="term__dot" style="--c:#28c840"></span>
+          <span class="term__title mono">rivaldi@agent-core: ~/init</span>
+        </div>
+        <pre class="term__body mono" id="boot-seq" aria-label="agent boot sequence"></pre>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ TICKER ============ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>TYPESCRIPT</span><span>◆</span><span>SOLIDITY</span><span>◆</span><span>CLAUDE AGENTS</span><span>◆</span><span>ETHEREUM</span><span>◆</span><span>NEXT.JS</span><span>◆</span><span>MCP</span><span>◆</span><span>DEFI</span><span>◆</span><span>PROMPT ENGINEERING</span><span>◆</span><span>BASE</span><span>◆</span><span>VIBECODING</span><span>◆</span>
+      <span>TYPESCRIPT</span><span>◆</span><span>SOLIDITY</span><span>◆</span><span>CLAUDE AGENTS</span><span>◆</span><span>ETHEREUM</span><span>◆</span><span>NEXT.JS</span><span>◆</span><span>MCP</span><span>◆</span><span>DEFI</span><span>◆</span><span>PROMPT ENGINEERING</span><span>◆</span><span>BASE</span><span>◆</span><span>VIBECODING</span><span>◆</span>
+    </div>
   </div>
-  <nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-</nav>
-</nav>
-    <!-- Awal jumbotron -->
-  <div class="jumbotron text-center
-  ">    <img src="portfolio/img/profile1.png">
-    <p><h1>Rivaldi</h1></p>
-    <p class="lead">Pelajar | Web Developer</p>
-  </div>
-    <!-- Akhir jumbotron -->
 
-    <!-- Awal About-->
-    <section class="about" id="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <h2 class="text-center">About</h2>
-            <hr>
-          </div>
-        </div>
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <p class="section__index mono reveal">01 / IDENTITY</p>
+    <h2 class="section__title reveal">Three modes. One <span class="gradient-text">operator</span>.</h2>
+    <div class="cards">
+      <article class="card reveal">
+        <div class="card__icon">〜</div>
+        <h3>Vibecoder</h3>
+        <p>Taste over boilerplate. I describe the destination, curate the output, and polish
+        until it feels right. Speed of thought → speed of shipping. The prompt is the new IDE.</p>
+        <p class="card__tag mono">// intuition-driven development</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__icon">⬡</div>
+        <h3>Full AI Agentic</h3>
+        <p>My workflow is a fleet: agents that research, write, review and deploy while I
+        direct. Claude-powered pipelines, MCP tooling, autonomous loops — human intent,
+        machine execution.</p>
+        <p class="card__tag mono">// orchestrator &gt; operator</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__icon">Ξ</div>
+        <h3>Web3 Enthusiast</h3>
+        <p>Building where value is programmable. DeFi analytics, blockchain explorers,
+        NFT tooling, market-sentiment trackers — reading the chain and turning it into
+        interfaces people actually use.</p>
+        <p class="card__tag mono">// gm. wagmi.</p>
+      </article>
+    </div>
+  </section>
 
-        <div class="row">
-          <div class="col-sm-4 offset-2">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-          <div class="col-sm-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </div>
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects">
+    <p class="section__index mono reveal">02 / SHIPPED</p>
+    <h2 class="section__title reveal">Live from the <span class="gradient-text">GitHub API</span></h2>
+    <p class="section__sub reveal mono">This grid renders itself from <a href="https://api.github.com/users/RivaldiDev/repos" target="_blank" rel="noopener">api.github.com</a> at page load — always current, zero maintenance.</p>
+    <div class="filters reveal" id="filters" role="tablist">
+      <button class="chip is-active" data-filter="all">all</button>
+      <button class="chip" data-filter="web3">web3</button>
+      <button class="chip" data-filter="ai">ai</button>
+      <button class="chip" data-filter="web">web</button>
+    </div>
+    <div class="grid" id="projects-grid" aria-live="polite">
+      <!-- skeletons replaced by JS -->
+      <div class="proj proj--skeleton"></div>
+      <div class="proj proj--skeleton"></div>
+      <div class="proj proj--skeleton"></div>
+      <div class="proj proj--skeleton"></div>
+      <div class="proj proj--skeleton"></div>
+      <div class="proj proj--skeleton"></div>
+    </div>
+  </section>
+
+  <!-- ============ TERMINAL ============ -->
+  <section class="section" id="terminal">
+    <p class="section__index mono reveal">03 / PLAYGROUND</p>
+    <h2 class="section__title reveal">Talk to the <span class="gradient-text">machine</span></h2>
+    <p class="section__sub reveal mono">An actual shell. Try <code>help</code>, <code>projects</code>, <code>stack</code> or <code>gm</code>.</p>
+    <div class="term term--interactive reveal">
+      <div class="term__bar">
+        <span class="term__dot" style="--c:#ff5f57"></span>
+        <span class="term__dot" style="--c:#febc2e"></span>
+        <span class="term__dot" style="--c:#28c840"></span>
+        <span class="term__title mono">visitor@rivaldi.dev: ~</span>
       </div>
-    </section>
-    <!-- Akhir About -->
-
-    <!-- Portfolio -->
-    <section class="portfolio" id="portfolio">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 text-center py-3 ">
-            <h2>Portfolio</h2>
-            <hr>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-4">
-            <a href="">
-              <img src="portfolio/img/thumbs/1.png" class="img-thumbnail">
-            </a>   
-          </div>
-          <div class="col-sm-4">
-            <a href="">
-              <img src="portfolio/img/thumbs/2.png" class="img-thumbnail">
-            </a>   
-          </div>
-          <div class="col-sm-4">
-            <a href="">
-              <img src="portfolio/img/thumbs/3.png" class="img-thumbnail">
-            </a>   
-          </div>
-          <div class="col-sm-4">
-            <a href="">
-              <img src="portfolio/img/thumbs/4.png" class="img-thumbnail">
-            </a>   
-          </div>
-          <div class="col-sm-4">
-            <a href="">
-              <img src="portfolio/img/thumbs/5.png" class="img-thumbnail">
-            </a>   
-          </div>
-          <div class="col-sm-4">
-            <a href="">
-              <img src="portfolio/img/thumbs/6.png" class="img-thumbnail">
-            </a>   
-          </div>
-        </div>
+      <div class="term__body mono" id="shell-out"></div>
+      <div class="term__input mono">
+        <label for="shell-in" class="accent">visitor@rivaldi.dev:~$</label>
+        <input id="shell-in" type="text" autocomplete="off" spellcheck="false" aria-label="terminal input">
       </div>
-    </section>
-    <!-- Akhir Portfoilio -->
+    </div>
+  </section>
 
+  <!-- ============ CONTACT ============ -->
+  <section class="section section--contact" id="contact">
+    <p class="section__index mono reveal">04 / HANDSHAKE</p>
+    <h2 class="section__title section__title--big reveal">
+      Got an idea?<br><span class="gradient-text">Let's ship it.</span>
+    </h2>
+    <p class="section__sub reveal">Open to collabs, freelance builds and interesting onchain experiments.</p>
+    <div class="hero__cta reveal">
+      <a class="btn btn--primary" href="mailto:ripaldialdo001@gmail.com">✉ ripaldialdo001@gmail.com</a>
+      <a class="btn btn--ghost" href="https://github.com/RivaldiDev" target="_blank" rel="noopener">⌥ github.com/RivaldiDev</a>
+    </div>
+  </section>
 
-    <!-- Form -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <div class="row">
-          <div class=" col-sm-12 text-center py-3">
-          <h2>Contact</h2>
-          <hr>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8 offset-2">
-            <form>
-              <div class="form-group">
-                <label for="nama">Nama</label>
-                <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama">
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Masukkan Email">
-              </div>
-              <div class="form-group">
-                <label for="telepon">Telepon</label>
-                <input type="telp" name="telepon" class="form-control" placeholder="Masukkan Nomer Hp">
-              </div>
-              <select class="form-control">
-                <option>-- Pilih Kategori --</option>
-                <option>Web Design</option>
-                <option>Web Development</option>
-              </select>
-              <div class="form-group">
-                <label for="pesan">Pesan</label>
-              <textarea class="form-control" rows="10" placeholder="Masukkan Pesan"></textarea>
-              <button type="submit" class="btn btn-primary">Kirim Pesan</button>
-            </div>
-            </form>
-          </div>
-          
-        </div>
-      </div>
-    </section>
+  <footer class="footer mono">
+    <span>© <span id="year"></span> Rivaldi · designed &amp; engineered with AI agents</span>
+    <span class="footer__meta">no framework · no build step · just GitHub Pages + vibes</span>
+  </footer>
 
-    <!-- Akhir Form -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+  <!-- ============ COMMAND PALETTE ============ -->
+  <dialog class="palette" id="palette">
+    <input class="palette__input mono" id="palette-input" type="text" placeholder="Type a command…" autocomplete="off" spellcheck="false">
+    <ul class="palette__list mono" id="palette-list"></ul>
+    <p class="palette__hint mono">↑↓ navigate · ⏎ run · esc close</p>
+  </dialog>
+
+  <script src="assets/app.js" defer></script>
+</body>
 </html>
