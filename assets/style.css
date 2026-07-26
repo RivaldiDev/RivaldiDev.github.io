@@ -38,6 +38,26 @@ body {
 
 ::selection { background: #3a3527; color: var(--ink); }
 
+/* ---------- dotted glow background ---------- */
+/* base dot grid + a brighter amber layer revealed around the cursor */
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(var(--line) 1px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+body::before { z-index: -2; }
+body::after {
+  z-index: -1;
+  background-image: radial-gradient(rgba(217, 164, 65, 0.55) 1px, transparent 1.5px);
+  mask-image: radial-gradient(220px circle at var(--mx, -600px) var(--my, -600px), #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(220px circle at var(--mx, -600px) var(--my, -600px), #000 30%, transparent 100%);
+}
+
 a { color: inherit; text-decoration: none; }
 .mono { font-family: var(--font-mono); }
 
@@ -316,6 +336,19 @@ em { font-style: italic; }
   gap: 1rem;
 }
 
+/* bento layout on wide screens */
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-flow: dense;
+  }
+  .grid .proj:nth-child(1) { grid-column: span 2; grid-row: span 2; padding: 1.8rem; }
+  .grid .proj:nth-child(1) .proj__name { font-size: 1.15rem; }
+  .grid .proj:nth-child(2),
+  .grid .proj:nth-child(3),
+  .grid .proj:nth-child(8) { grid-column: span 2; }
+}
+
 .proj {
   display: flex;
   flex-direction: column;
@@ -385,6 +418,98 @@ a.proj:active { transform: scale(0.99); }
   padding: 2rem;
 }
 .grid__error a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- carousel ---------- */
+
+.carousel { margin-bottom: 2.4rem; }
+
+.carousel__track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  border-radius: var(--radius);
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(1.6rem, 4vw, 2.6rem);
+  min-height: 210px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  transition: border-color 180ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .slide:hover { border-color: var(--dim); }
+}
+
+.slide__badge {
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.slide h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  text-transform: capitalize;
+}
+.slide p { color: var(--dim); font-size: 0.92rem; max-width: 56ch; flex: 1; }
+.slide__meta { font-size: 0.72rem; color: var(--dim); }
+
+.carousel__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.9rem;
+}
+
+.carousel__dots { display: flex; gap: 0.45rem; }
+.carousel__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  border: 0;
+  padding: 0;
+  background: var(--line);
+  cursor: pointer;
+  transition: background-color 200ms ease, width 250ms var(--ease-out);
+}
+.carousel__dot.is-active { background: var(--sage); width: 18px; }
+
+.carousel__btns { display: flex; gap: 0.4rem; }
+.car-btn {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--dim);
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease, transform 120ms var(--ease-out);
+}
+.car-btn:hover { color: var(--ink); border-color: var(--dim); }
+.car-btn:active { transform: scale(0.94); }
+
+/* ---------- colorful text ---------- */
+
+.cf {
+  color: var(--cfc, var(--amber));
+  display: inline-block;
+  transition: color 700ms ease;
+  animation: cf-in 500ms var(--ease-out) both;
+}
+@keyframes cf-in {
+  from { opacity: 0; transform: translateY(6px); }
+}
 
 /* ---------- terminal ---------- */
 

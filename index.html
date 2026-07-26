@@ -89,6 +89,18 @@
     <p class="section__index mono reveal" data-i18n="projects.index">02 — Karya</p>
     <h2 class="section__title reveal" data-i18n="projects.title">Langsung dari GitHub</h2>
     <p class="section__sub reveal" data-i18n="projects.sub">Daftar ini dirender dari API GitHub setiap kali halaman dimuat — selalu terbaru, tanpa perawatan.</p>
+
+    <div class="carousel reveal" id="carousel">
+      <div class="carousel__track" id="carousel-track" aria-live="polite"></div>
+      <div class="carousel__foot">
+        <div class="carousel__dots" id="carousel-dots"></div>
+        <div class="carousel__btns">
+          <button class="car-btn mono" id="car-prev" aria-label="previous">←</button>
+          <button class="car-btn mono" id="car-next" aria-label="next">→</button>
+        </div>
+      </div>
+    </div>
+
     <div class="filters reveal" id="filters">
       <button class="chip mono is-active" data-filter="all" data-i18n="filter.all">semua</button>
       <button class="chip mono" data-filter="web3">web3</button>

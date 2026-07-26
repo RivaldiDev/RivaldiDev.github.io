@@ -91,7 +91,46 @@ function applyLang() {
   $("#palette-input").placeholder = T("palette.placeholder");
   $("#lang-toggle").textContent = lang === "id" ? "EN" : "ID";
   renderProjects();
+  colorfulize();
 }
+
+/* ---------- 1b. colorful text (per-char flat palette colors) ---------- */
+
+const CF_PAL = ["amber", "clay", "sage", "blue"];
+let cfOffset = 0;
+
+function colorfulize() {
+  $$(".hero__title em, .section__title--big em").forEach((el) => {
+    const text = el.textContent;
+    el.innerHTML = [...text].map((ch, i) =>
+      ch.trim() === ""
+        ? ch
+        : `<span class="cf" data-i="${i}" style="--cfc: var(--${CF_PAL[(i + cfOffset) % 4]}); animation-delay: ${i * 45}ms">${ch}</span>`
+    ).join("");
+  });
+}
+
+setInterval(() => {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  cfOffset = (cfOffset + 1) % 4;
+  $$(".cf").forEach((s) => {
+    s.style.setProperty("--cfc", `var(--${CF_PAL[(+s.dataset.i + cfOffset) % 4]})`);
+  });
+}, 2200);
+
+/* ---------- 1c. dotted glow background (cursor reveal) ---------- */
+
+(() => {
+  let raf = 0;
+  addEventListener("pointermove", (e) => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      document.documentElement.style.setProperty("--mx", `${e.clientX}px`);
+      document.documentElement.style.setProperty("--my", `${e.clientY}px`);
+    });
+  });
+})();
 
 $("#lang-toggle").addEventListener("click", () => {
   lang = lang === "id" ? "en" : "id";
@@ -240,6 +279,7 @@ function renderProjects() {
   const grid = $("#projects-grid");
   if (repoError) {
     grid.innerHTML = `<div class="grid__error">${T("grid.error")}</div>`;
+    $("#carousel").style.display = "none";
     return;
   }
   if (!repoCache) return; // skeletons stay until fetch resolves
@@ -269,7 +309,89 @@ function renderProjects() {
       </div>`;
     grid.appendChild(a);
   }
+  buildCarousel();
 }
+
+/* ---------- 3b. featured carousel ---------- */
+
+let carTimer = null;
+let carIdx = 0;
+
+function buildCarousel() {
+  const track = $("#carousel-track");
+  const dots = $("#carousel-dots");
+  if (!track || !repoCache) return;
+  const top = repoCache.slice(0, 5);
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  track.innerHTML = top.map((r) => {
+    const cat = classify(r);
+    return `
+    <a class="slide" href="${r.homepage || r.html_url}" target="_blank" rel="noopener">
+      <span class="slide__badge mono proj__badge--${cat}">${cat}</span>
+      <h3>${r.name.replace(/-/g, " ")}</h3>
+      <p>${r.description || T("proj.noDesc")}</p>
+      <span class="slide__meta mono">${r.language ? r.language + " · " : ""}★ ${r.stargazers_count}</span>
+    </a>`;
+  }).join("");
+
+  dots.innerHTML = top.map((_, i) =>
+    `<button class="carousel__dot${i === 0 ? " is-active" : ""}" data-i="${i}" aria-label="slide ${i + 1}"></button>`
+  ).join("");
+
+  const go = (i) => {
+    carIdx = (i + top.length) % top.length;
+    const slide = track.children[carIdx];
+    if (slide) track.scrollTo({ left: slide.offsetLeft, behavior: reduced ? "auto" : "smooth" });
+  };
+
+  const restart = () => {
+    clearInterval(carTimer);
+    if (!reduced) carTimer = setInterval(() => go(carIdx + 1), 4500);
+  };
+
+  // on* properties so rebuilding on language switch never duplicates listeners
+  track.onscroll = () => {
+    const i = Math.round(track.scrollLeft / (track.children[0]?.offsetWidth + 16 || 1));
+    if (i !== carIdx && track.children[i]) {
+      carIdx = i;
+      $$(".carousel__dot").forEach((d, di) => d.classList.toggle("is-active", di === i));
+    }
+  };
+  track.onpointerenter = () => clearInterval(carTimer);
+  track.onpointerleave = restart;
+  dots.onclick = (e) => {
+    const b = e.target.closest(".carousel__dot");
+    if (b) { go(+b.dataset.i); restart(); }
+  };
+  $("#car-prev").onclick = () => { go(carIdx - 1); restart(); };
+  $("#car-next").onclick = () => { go(carIdx + 1); restart(); };
+
+  carIdx = 0;
+  track.scrollTo({ left: 0 });
+  restart();
+}
+
+/* ---------- 3c. 3d tilt on project cards ---------- */
+
+(() => {
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const grid = $("#projects-grid");
+  const MAX = 5; // degrees — subtle, not a funfair
+  grid.addEventListener("pointermove", (e) => {
+    const card = e.target.closest("a.proj");
+    if (!card) return;
+    const b = card.getBoundingClientRect();
+    const rx = ((e.clientY - b.top) / b.height - 0.5) * -2 * MAX;
+    const ry = ((e.clientX - b.left) / b.width - 0.5) * 2 * MAX;
+    card.style.transform = `perspective(700px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-2px)`;
+  });
+  grid.addEventListener("pointerout", (e) => {
+    const card = e.target.closest("a.proj");
+    if (card && !card.contains(e.relatedTarget)) card.style.transform = "";
+  });
+})();
 
 (async () => {
   try {
