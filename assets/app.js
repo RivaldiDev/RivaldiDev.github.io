@@ -32,7 +32,8 @@ const I18N = {
     "filter.all": "semua",
     "terminal.index": "03 — Interaktif",
     "terminal.title": "Bicara dengan mesin",
-    "terminal.sub": "Shell sungguhan. Coba <code>help</code>, <code>projects</code>, atau <code>stack</code>.",
+    "terminal.sub": "Shell sungguhan. Coba <code>help</code> — atau main <code>snake</code> dan <code>donut</code>.",
+    "ascii.hint": "gerakkan kursor · klik untuk riak",
     "terminal.win": "rivaldi.dev — terminal",
     "contact.index": "04 — Kontak",
     "contact.title": "Punya ide?<br><em>Mari kita wujudkan.</em>",
@@ -65,7 +66,8 @@ const I18N = {
     "filter.all": "all",
     "terminal.index": "03 — Interactive",
     "terminal.title": "Talk to the machine",
-    "terminal.sub": "An actual shell. Try <code>help</code>, <code>projects</code>, or <code>stack</code>.",
+    "terminal.sub": "An actual shell. Try <code>help</code> — or play <code>snake</code> and <code>donut</code>.",
+    "ascii.hint": "move your cursor · click for ripples",
     "terminal.win": "rivaldi.dev — terminal",
     "contact.index": "04 — Contact",
     "contact.title": "Got an idea?<br><em>Let's build it.</em>",
@@ -101,7 +103,90 @@ $("#lang-toggle").addEventListener("click", () => {
   }
 });
 
-/* ---------- 2. GitHub API: projects ---------- */
+/* ---------- 2. interactive ascii field ---------- */
+
+(() => {
+  const canvas = $("#ascii");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const RAMP = " ·.:-~=+*x#";
+  const CELL_W = 11, CELL_H = 16;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let cols, rows, dpr;
+  const mouse = { x: -1e4, y: -1e4 };
+  let ripples = [];
+
+  const resize = () => {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.font = `${CELL_H - 3}px "JetBrains Mono", monospace`;
+    ctx.textBaseline = "top";
+    cols = Math.ceil(w / CELL_W);
+    rows = Math.ceil(h / CELL_H);
+  };
+
+  const field = (x, y, t) => {
+    // slow ink wave
+    let v = 0.5 + 0.28 * Math.sin(x * 0.32 + t * 0.7) * Math.cos(y * 0.4 - t * 0.5)
+                + 0.16 * Math.sin((x + y) * 0.18 - t * 0.9);
+    // cursor torch
+    const px = x * CELL_W, py = y * CELL_H;
+    const dm = Math.hypot(px - mouse.x, py - mouse.y);
+    v += Math.max(0, 1 - dm / 130) * 0.55;
+    // click ripples: expanding rings that fade
+    for (const r of ripples) {
+      const age = t - r.t0;
+      const d = Math.hypot(px - r.x, py - r.y);
+      v += Math.sin(d * 0.09 - age * 7) * Math.exp(-d * 0.008 - age * 1.6) * r.amp;
+    }
+    return v;
+  };
+
+  const draw = (t) => {
+    ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        const v = Math.max(0, Math.min(1, field(x, y, t)));
+        const ch = RAMP[(v * (RAMP.length - 1)) | 0];
+        if (ch === " ") continue;
+        ctx.fillStyle = `rgba(25, 23, 18, ${0.08 + v * 0.55})`;
+        ctx.fillText(ch, x * CELL_W, y * CELL_H);
+      }
+    }
+  };
+
+  let last = 0;
+  const loop = (ms) => {
+    const t = ms / 1000;
+    if (ms - last > 80) { // ~12fps: deliberate, typewriter-like cadence
+      last = ms;
+      ripples = ripples.filter((r) => t - r.t0 < 3);
+      draw(t);
+    }
+    requestAnimationFrame(loop);
+  };
+
+  canvas.addEventListener("pointermove", (e) => {
+    const b = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - b.left;
+    mouse.y = e.clientY - b.top;
+  });
+  canvas.addEventListener("pointerleave", () => { mouse.x = -1e4; mouse.y = -1e4; });
+  canvas.addEventListener("pointerdown", (e) => {
+    const b = canvas.getBoundingClientRect();
+    ripples.push({ x: e.clientX - b.left, y: e.clientY - b.top, t0: performance.now() / 1000, amp: 0.9 });
+  });
+
+  addEventListener("resize", resize);
+  resize();
+  if (reduced) draw(0);
+  else requestAnimationFrame(loop);
+})();
+
+/* ---------- 3. GitHub API: projects ---------- */
 
 const classify = (repo) => {
   const t = `${repo.name} ${repo.description || ""} ${(repo.topics || []).join(" ")}`.toLowerCase();
@@ -162,7 +247,7 @@ function renderProjects() {
   renderProjects();
 })();
 
-/* ---------- 3. project filters ---------- */
+/* ---------- 4. project filters ---------- */
 
 $("#filters").addEventListener("click", (e) => {
   const chip = e.target.closest(".chip");
@@ -175,7 +260,7 @@ $("#filters").addEventListener("click", (e) => {
   });
 });
 
-/* ---------- 4. interactive shell ---------- */
+/* ---------- 5. interactive shell ---------- */
 
 (() => {
   const out = $("#shell-out");
@@ -197,6 +282,8 @@ $("#filters").addEventListener("click", (e) => {
         `  <span class="t-ok">projects</span>   — repo terbaru\n` +
         `  <span class="t-ok">stack</span>      — perkakas andalan\n` +
         `  <span class="t-ok">contact</span>    — buka jalur komunikasi\n` +
+        `  <span class="t-ok">snake</span>      — main ular di sini\n` +
+        `  <span class="t-ok">donut</span>      — donat ASCII berputar\n` +
         `  <span class="t-ok">clear</span>      — bersihkan layar\n` +
         `  <span class="t-dim">…dan beberapa yang tidak terdokumentasi.</span>`,
       whoami:
@@ -211,6 +298,9 @@ $("#filters").addEventListener("click", (e) => {
       contact:
         `<span class="t-ok">email:</span>  <a href="mailto:ripaldialdo001@gmail.com">ripaldialdo001@gmail.com</a>\n` +
         `<span class="t-ok">github:</span> <a href="https://github.com/${GH_USER}" target="_blank" rel="noopener">github.com/${GH_USER}</a>`,
+      snakeHint: "panah/WASD · q keluar",
+      snakeOver: (s) => `<span class="t-hi">permainan selesai — skor: ${s}</span> <span class="t-dim">· ketik snake untuk main lagi</span>`,
+      donutHint: "tekan tombol apa saja untuk berhenti…",
       syncing: `<span class="t-dim">masih sinkronisasi dengan GitHub… coba lagi sebentar.</span>`,
       notFound: (c) => `<span class="t-dim">perintah tidak ditemukan: ${c} — coba <span class="t-ok">help</span></span>`,
       sudo: `<span class="t-dim">akses ditolak. insiden ini akan dilaporkan ke armada agen.</span>`,
@@ -224,6 +314,8 @@ $("#filters").addEventListener("click", (e) => {
         `  <span class="t-ok">projects</span>   — latest repos\n` +
         `  <span class="t-ok">stack</span>      — tools of choice\n` +
         `  <span class="t-ok">contact</span>    — open a channel\n` +
+        `  <span class="t-ok">snake</span>      — play snake right here\n` +
+        `  <span class="t-ok">donut</span>      — spinning ASCII donut\n` +
         `  <span class="t-ok">clear</span>      — wipe the screen\n` +
         `  <span class="t-dim">…and a few undocumented ones.</span>`,
       whoami:
@@ -238,6 +330,9 @@ $("#filters").addEventListener("click", (e) => {
       contact:
         `<span class="t-ok">email:</span>  <a href="mailto:ripaldialdo001@gmail.com">ripaldialdo001@gmail.com</a>\n` +
         `<span class="t-ok">github:</span> <a href="https://github.com/${GH_USER}" target="_blank" rel="noopener">github.com/${GH_USER}</a>`,
+      snakeHint: "arrows/WASD · q to quit",
+      snakeOver: (s) => `<span class="t-hi">game over — score: ${s}</span> <span class="t-dim">· type snake to play again</span>`,
+      donutHint: "press any key to stop…",
       syncing: `<span class="t-dim">still syncing with GitHub… try again in a moment.</span>`,
       notFound: (c) => `<span class="t-dim">command not found: ${c} — try <span class="t-ok">help</span></span>`,
       sudo: `<span class="t-dim">access denied. this incident will be reported to the agent fleet.</span>`,
@@ -247,7 +342,129 @@ $("#filters").addEventListener("click", (e) => {
 
   const S = () => SHELL[lang];
 
+  /* --- games (snake + donut) --- */
+
+  let stopGame = null;
+
+  const artLine = () => {
+    const div = document.createElement("div");
+    div.innerHTML = `<span class="t-art"></span>`;
+    out.appendChild(div);
+    return div.firstChild;
+  };
+
+  function startSnake() {
+    if (stopGame) stopGame();
+    const W = 26, H = 12;
+    let dir = { x: 1, y: 0 }, queued = dir;
+    const body = [{ x: 6, y: 6 }, { x: 5, y: 6 }, { x: 4, y: 6 }];
+    let food = null, score = 0;
+    const art = artLine();
+
+    const placeFood = () => {
+      do { food = { x: (Math.random() * W) | 0, y: (Math.random() * H) | 0 }; }
+      while (body.some((s) => s.x === food.x && s.y === food.y));
+    };
+    placeFood();
+
+    const render = () => {
+      const g = Array.from({ length: H }, () => Array(W).fill(" "));
+      g[food.y][food.x] = "•";
+      body.forEach((s, i) => { g[s.y][s.x] = i === 0 ? "█" : "▓"; });
+      art.textContent =
+        "┌" + "─".repeat(W) + "┐\n" +
+        g.map((r) => "│" + r.join("") + "│").join("\n") +
+        "\n└" + "─".repeat(W) + "┘\n" +
+        `  score: ${score} · ${S().snakeHint}`;
+      out.scrollTop = out.scrollHeight;
+    };
+
+    const key = (e) => {
+      const k = e.key.toLowerCase();
+      const map = {
+        arrowup: [0, -1], w: [0, -1], arrowdown: [0, 1], s: [0, 1],
+        arrowleft: [-1, 0], a: [-1, 0], arrowright: [1, 0], d: [1, 0],
+      };
+      if (map[k]) {
+        e.preventDefault();
+        const [x, y] = map[k];
+        if (x !== -dir.x || y !== -dir.y) queued = { x, y };
+      } else if (k === "q" || k === "escape") end(true);
+    };
+
+    const end = (announce) => {
+      clearInterval(timer);
+      removeEventListener("keydown", key, true);
+      stopGame = null;
+      if (announce) print(S().snakeOver(score));
+    };
+
+    const timer = setInterval(() => {
+      dir = queued;
+      const head = { x: body[0].x + dir.x, y: body[0].y + dir.y };
+      if (head.x < 0 || head.x >= W || head.y < 0 || head.y >= H ||
+          body.some((s) => s.x === head.x && s.y === head.y)) return end(true);
+      body.unshift(head);
+      if (head.x === food.x && head.y === food.y) { score++; placeFood(); }
+      else body.pop();
+      render();
+    }, 110);
+
+    addEventListener("keydown", key, true);
+    stopGame = () => end(false);
+    render();
+  }
+
+  function startDonut() {
+    if (stopGame) stopGame();
+    print(`<span class="t-dim">${S().donutHint}</span>`);
+    const art = artLine();
+    const W = 64, H = 20;
+    let A = 1, B = 1;
+
+    const frame = () => {
+      const b = Array(W * H).fill(" "), z = Array(W * H).fill(0);
+      for (let j = 0; j < 6.28; j += 0.07) {
+        for (let i = 0; i < 6.28; i += 0.02) {
+          const c = Math.sin(i), d = Math.cos(j), e = Math.sin(A), f = Math.sin(j), g = Math.cos(A);
+          const h = d + 2, D = 1 / (c * h * e + f * g + 5);
+          const l = Math.cos(i), m = Math.cos(B), n = Math.sin(B), t = c * h * g - f * e;
+          const x = (W / 2 + 27 * D * (l * h * m - t * n)) | 0;
+          const y = (H / 2 + 13 * D * (l * h * n + t * m)) | 0;
+          const o = x + W * y;
+          const N = (8 * ((f * e - c * d * g) * m - c * d * e - f * g - l * d * n)) | 0;
+          if (y >= 0 && y < H && x >= 0 && x < W && D > z[o]) {
+            z[o] = D;
+            b[o] = ".,-~:;=!*#$@"[N > 0 ? N : 0];
+          }
+        }
+      }
+      let s = "";
+      for (let k = 0; k < W * H; k++) s += b[k] + (k % W === W - 1 ? "\n" : "");
+      art.textContent = s;
+      A += 0.07; B += 0.03;
+    };
+
+    const end = () => {
+      clearInterval(timer);
+      clearTimeout(auto);
+      removeEventListener("keydown", key, true);
+      stopGame = null;
+    };
+    const key = () => end();
+    const timer = setInterval(frame, 50);
+    const auto = setTimeout(end, 60000);
+
+    addEventListener("keydown", key, true);
+    stopGame = end;
+    frame();
+    out.scrollTop = out.scrollHeight;
+  }
+
   const COMMANDS = {
+    snake: () => startSnake(),
+    ular: () => startSnake(),
+    donut: () => startDonut(),
     help: () => print(S().help),
     bantuan: () => print(S().help),
     whoami: () => print(S().whoami),
@@ -268,6 +485,14 @@ $("#filters").addEventListener("click", (e) => {
     clear: () => { out.innerHTML = ""; },
   };
 
+  const BANNER = [
+    " ___  _              _     _  _ ",
+    "| _ \\(_)__ __  __ _ | | __| |(_)",
+    "|   /| |\\ V / / _` || |/ _` || |",
+    "|_|_\\|_| \\_/  \\__,_||_|\\__,_||_|",
+  ].join("\n");
+
+  print(`<span class="t-art t-dim">${BANNER}</span>`);
   print(S().intro);
 
   input.addEventListener("keydown", (e) => {
@@ -275,6 +500,7 @@ $("#filters").addEventListener("click", (e) => {
     const raw = input.value.trim();
     input.value = "";
     if (!raw) return;
+    if (stopGame) stopGame();
     const safe = raw.replace(/</g, "&lt;");
     print(`<span class="t-ok">$</span> ${safe}`);
     const cmd = raw.toLowerCase().split(/\s+/)[0];
@@ -285,7 +511,7 @@ $("#filters").addEventListener("click", (e) => {
   $("#terminal .term").addEventListener("click", () => input.focus());
 })();
 
-/* ---------- 5. command palette (Ctrl+K) ---------- */
+/* ---------- 6. command palette (Ctrl+K) ---------- */
 
 (() => {
   const dlg = $("#palette");
@@ -335,7 +561,7 @@ $("#filters").addEventListener("click", (e) => {
   dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
 })();
 
-/* ---------- 6. scroll reveal ---------- */
+/* ---------- 7. scroll reveal ---------- */
 
 (() => {
   const io = new IntersectionObserver((entries) => {
@@ -346,6 +572,6 @@ $("#filters").addEventListener("click", (e) => {
   $$(".reveal").forEach((el) => io.observe(el));
 })();
 
-/* ---------- 7. init ---------- */
+/* ---------- 8. init ---------- */
 
 applyLang();
