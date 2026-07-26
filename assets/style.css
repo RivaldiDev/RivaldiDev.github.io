@@ -14,6 +14,8 @@
   --term-ink: #d9d5ca;
   --term-dim: #8a867a;
   --radius: 10px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --font-serif: "Fraunces", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -71,6 +73,7 @@ em { font-style: italic; }
   font-size: 0.88rem;
   color: var(--dim);
 }
+.nav__links a { transition: color 150ms ease; }
 .nav__links a:hover { color: var(--ink); }
 
 .nav__tools { display: flex; gap: 0.5rem; align-items: center; }
@@ -133,14 +136,36 @@ em { font-style: italic; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 2rem; }
 
 .link-btn {
+  position: relative;
+  display: inline-block;
   font-size: 0.95rem;
   font-weight: 500;
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 2px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  padding-bottom: 3px;
+  transition: color 150ms ease, transform 100ms var(--ease-out);
 }
-.link-btn:hover { color: var(--accent); border-color: var(--accent); }
-.link-btn--dim { color: var(--dim); border-color: var(--line); }
+.link-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+}
+.link-btn:active { transform: translateY(1px); }
+.link-btn--dim { color: var(--dim); }
+.link-btn--dim::after { opacity: 0.45; }
+
+@media (hover: hover) and (pointer: fine) {
+  .link-btn:hover { color: var(--accent); }
+  .link-btn:hover::after { animation: underline-swipe 450ms var(--ease-in-out); }
+}
+@keyframes underline-swipe {
+  0%      { transform: scaleX(1); transform-origin: right; }
+  50%     { transform: scaleX(0); transform-origin: right; }
+  50.01%  { transform-origin: left; }
+  100%    { transform: scaleX(1); transform-origin: left; }
+}
 
 /* ---------- sections ---------- */
 
@@ -226,9 +251,12 @@ em { font-style: italic; }
   background: transparent;
   color: var(--dim);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease, transform 120ms var(--ease-out);
 }
-.chip:hover { border-color: var(--dim); color: var(--ink); }
+.chip:active { transform: scale(0.96); }
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover { border-color: var(--dim); color: var(--ink); }
+}
 .chip.is-active {
   background: var(--ink);
   border-color: var(--ink);
@@ -251,11 +279,20 @@ em { font-style: italic; }
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #fff;
-  transition: border-color 0.18s ease, transform 0.18s ease;
+  transition: border-color 180ms ease, transform 220ms var(--ease-out);
+  animation: proj-in 500ms var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * 45ms);
 }
-a.proj:hover {
-  border-color: var(--ink);
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  a.proj:hover {
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+}
+a.proj:active { transform: scale(0.99); }
+
+@keyframes proj-in {
+  from { opacity: 0; transform: translateY(10px); }
 }
 
 .proj__head { display: flex; align-items: baseline; gap: 0.6rem; }
@@ -332,6 +369,11 @@ a.proj:hover {
   word-break: break-word;
   scrollbar-width: thin;
   scrollbar-color: #2c2a23 transparent;
+}
+
+.term__body > div { animation: line-in 200ms var(--ease-out) both; }
+@keyframes line-in {
+  from { opacity: 0; transform: translateY(4px); }
 }
 
 .term__body .t-hi { color: #f0ede4; }
@@ -429,9 +471,24 @@ a.proj:hover {
 .reveal {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 550ms ease, transform 550ms var(--ease-out);
 }
 .reveal.is-in { opacity: 1; transform: none; }
+
+/* staggered entrances: hero on load, modes on scroll */
+.hero > .reveal:nth-child(2) { transition-delay: 70ms; }
+.hero > .reveal:nth-child(3) { transition-delay: 140ms; }
+.hero > .reveal:nth-child(4) { transition-delay: 210ms; }
+.hero > .reveal:nth-child(5) { transition-delay: 280ms; }
+.modes .mode:nth-child(2) { transition-delay: 80ms; }
+.modes .mode:nth-child(3) { transition-delay: 160ms; }
+
+/* language switch crossfade (View Transition API) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: ease;
+}
 
 /* ---------- responsive ---------- */
 
@@ -445,8 +502,10 @@ a.proj:hover {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001s !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001s !important;
+    transition-delay: 0s !important;
   }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }

@@ -94,7 +94,11 @@ function applyLang() {
 $("#lang-toggle").addEventListener("click", () => {
   lang = lang === "id" ? "en" : "id";
   localStorage.setItem("lang", lang);
-  applyLang();
+  if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.startViewTransition(applyLang);
+  } else {
+    applyLang();
+  }
 });
 
 /* ---------- 2. GitHub API: projects ---------- */
@@ -119,6 +123,7 @@ function renderProjects() {
   if (!repoCache) return; // skeletons stay until fetch resolves
 
   grid.innerHTML = "";
+  let i = 0;
   for (const repo of repoCache) {
     const cat = classify(repo);
     const a = document.createElement("a");
@@ -128,6 +133,7 @@ function renderProjects() {
     a.target = "_blank";
     a.rel = "noopener";
     a.style.display = activeFilter === "all" || cat === activeFilter ? "" : "none";
+    a.style.setProperty("--i", i++);
     a.innerHTML = `
       <div class="proj__head">
         <span class="proj__name">${repo.name}</span>
