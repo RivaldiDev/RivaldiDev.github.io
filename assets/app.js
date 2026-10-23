@@ -14,7 +14,6 @@ const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const I18N = {
   id: {
     "nav.about": "Tentang",
-    "nav.featured": "Unggulan",
     "nav.projects": "Proyek",
     "nav.contact": "Kontak",
     "hero.eyebrow": "Portofolio",
@@ -22,28 +21,21 @@ const I18N = {
     "hero.lead": "Saya <strong>Rivaldi</strong> — developer dari Indonesia. Dasbor onchain, alat berbasis AI, dan eksperimen web3: dirakit cepat, dirilis rapi.",
     "hero.cta1": "Lihat proyek ↓",
     "hero.cta2": "Buka terminal →",
-    "about.index": "01 — Identitas",
+    "about.index": "01 Identitas",
     "about.title": "Tiga mode. Satu operator.",
     "mode1.body": "Selera di atas boilerplate. Saya menentukan arah, mengkurasi hasil, dan memolesnya sampai terasa tepat. Kecepatan berpikir menjadi kecepatan merilis.",
     "mode2.body": "Alur kerja saya adalah armada agen: meriset, menulis, mereview, dan men-deploy sementara saya mengarahkan. Niat manusia, eksekusi mesin.",
     "mode3.body": "Membangun di tempat nilai bisa diprogram. Analitik DeFi, blockchain explorer, dan perkakas NFT — membaca chain dan mengubahnya menjadi antarmuka yang berguna.",
-    "featured.index": "02 — Unggulan",
-    "featured.title": "Studi kasus terpilih",
-    "featured.sub": "Proyek klien dan produk yang tidak muncul di API GitHub karena reponya privat. Dikurasi manual — kode tersedia untuk ditinjau atas permintaan.",
-    "feat.private": "repo privat",
-    "feat.live": "Buka situs live",
-    "feat.docs": "Buku pemain",
-    "feat.source": "Minta akses kode",
-    "projects.index": "03 — Karya",
+    "projects.index": "03 Karya",
     "projects.title": "Langsung dari GitHub",
     "projects.sub": "Daftar ini dirender dari API GitHub setiap kali halaman dimuat — selalu terbaru, tanpa perawatan.",
     "filter.all": "semua",
-    "terminal.index": "04 — Interaktif",
+    "terminal.index": "04 Interaktif",
     "terminal.title": "Bicara dengan mesin",
     "terminal.sub": "Shell sungguhan. Coba <code>help</code> — atau main <code>snake</code> dan <code>donut</code>.",
     "ascii.hint": "gerakkan kursor · klik untuk riak",
     "terminal.win": "rivaldi.dev — terminal",
-    "contact.index": "05 — Kontak",
+    "contact.index": "05 Kontak",
     "contact.title": "Punya ide?<br><em>Mari kita wujudkan.</em>",
     "contact.sub": "Terbuka untuk kolaborasi, proyek lepas, dan eksperimen onchain yang menarik.",
     "footer.left": `© ${new Date().getFullYear()} Rivaldi · dirancang &amp; dibangun bersama agen AI`,
@@ -56,7 +48,6 @@ const I18N = {
   },
   en: {
     "nav.about": "About",
-    "nav.featured": "Featured",
     "nav.projects": "Projects",
     "nav.contact": "Contact",
     "hero.eyebrow": "Portfolio",
@@ -64,28 +55,21 @@ const I18N = {
     "hero.lead": "I'm <strong>Rivaldi</strong> — a developer from Indonesia. Onchain dashboards, AI-powered tools, and web3 experiments: built fast, shipped clean.",
     "hero.cta1": "View projects ↓",
     "hero.cta2": "Open terminal →",
-    "about.index": "01 — Identity",
+    "about.index": "01 Identity",
     "about.title": "Three modes. One operator.",
     "mode1.body": "Taste over boilerplate. I set the direction, curate the output, and polish until it feels right. Speed of thought becomes speed of shipping.",
     "mode2.body": "My workflow is a fleet of agents: researching, writing, reviewing, and deploying while I direct. Human intent, machine execution.",
     "mode3.body": "Building where value is programmable. DeFi analytics, blockchain explorers, and NFT tooling — reading the chain and turning it into useful interfaces.",
-    "featured.index": "02 — Featured",
-    "featured.title": "Selected case studies",
-    "featured.sub": "Client and product work that never shows up in the GitHub API because the repos are private. Hand-curated — code available for review on request.",
-    "feat.private": "private repo",
-    "feat.live": "Open live site",
-    "feat.docs": "Player book",
-    "feat.source": "Request source access",
-    "projects.index": "03 — Work",
+    "projects.index": "03 Work",
     "projects.title": "Live from GitHub",
     "projects.sub": "This grid renders itself from the GitHub API on every page load — always current, zero maintenance.",
     "filter.all": "all",
-    "terminal.index": "04 — Interactive",
+    "terminal.index": "04 Interactive",
     "terminal.title": "Talk to the machine",
     "terminal.sub": "An actual shell. Try <code>help</code> — or play <code>snake</code> and <code>donut</code>.",
     "ascii.hint": "move your cursor · click for ripples",
     "terminal.win": "rivaldi.dev — terminal",
-    "contact.index": "05 — Contact",
+    "contact.index": "05 Contact",
     "contact.title": "Got an idea?<br><em>Let's build it.</em>",
     "contact.sub": "Open to collaborations, freelance work, and interesting onchain experiments.",
     "footer.left": `© ${new Date().getFullYear()} Rivaldi · designed &amp; built with AI agents`,
@@ -106,7 +90,6 @@ function applyLang() {
   $$("[data-i18n]").forEach((el) => { el.innerHTML = T(el.dataset.i18n); });
   $("#palette-input").placeholder = T("palette.placeholder");
   $("#lang-toggle").textContent = lang === "id" ? "EN" : "ID";
-  renderFeatured();
   renderProjects();
   colorfulize();
 }
@@ -278,80 +261,6 @@ $("#lang-toggle").addEventListener("click", () => {
     scrambleTo(ROLES[idx]);
   }, 3400);
 })();
-
-/* ---------- 2b. featured showcase (curated — private repos never reach the GitHub API) ----------
-   Add an object per project. Text fields are { id, en }. Keep facts verifiable. */
-
-const FEATURED = [
-  {
-    slug: "social-arena",
-    name: "Social Arena",
-    cat: "web3",
-    logo: "assets/social-arena.png",
-    url: "https://www.socialsarena.xyz",
-    docs: "https://www.socialsarena.xyz/docs",
-    tagline: {
-      id: "Fantasy card game di atas kreator Crypto Twitter — diselesaikan onchain.",
-      en: "A fantasy card game built on Crypto Twitter creators, settled onchain.",
-    },
-    desc: {
-      id: "Kartunya adalah top trader fomo.family, diberi skor dari engagement nyata mereka di X. Pemain membuka pack, meng-upgrade dan memfusi kartu, berdagang dan bid di market, lalu bertanding Classic dan Ranked. Pack, fee, dan market diselesaikan dalam ETH native di Robinhood Chain — satu transaksi bertanda tangan per aksi.",
-      en: "The cards are fomo.family's top traders, scored by their real engagement on X. Players open packs, upgrade and fuse cards, trade and bid on a market, and fight Classic and Ranked matches. Packs, fees and the market settle in native ETH on Robinhood Chain, one signed transaction per action.",
-    },
-    highlights: {
-      id: [
-        "Ledger double-entry untuk poin dan ETH — setiap test diakhiri cek konservasi yang berjumlah nol.",
-        "Alur bayar onchain: quote → tanda tangan di wallet → verifikasi transfer via hash → eksekusi → refund otomatis.",
-        "Oracle skor kreator dari ingest X harian; market dihargai USD, diselesaikan ETH lewat harga pool WETH/USDG.",
-        "Ranked ladder bermusim, antrian Arena (lawan live atau bot), pertarungan turn-based di server, dan sistem clan.",
-        "Panel admin terpisah, VPS yang di-harden (ufw, fail2ban, Caddy, timer systemd), backup terjadwal.",
-      ],
-      en: [
-        "Double-entry ledger for points and ETH — every test ends with a conservation check that sums to zero.",
-        "Onchain payment flow: quote → sign in wallet → verify the transfer by hash → run the action → auto refund.",
-        "Creator-score oracle from a daily X ingest; market priced in USD, settled in ETH via the WETH/USDG pool price.",
-        "Seasonal Ranked ladder, Arena queue (live or bot opponents), server-side turn-based fights, and clans.",
-        "Separate admin panel, hardened VPS (ufw, fail2ban, Caddy, systemd timers), scheduled backups.",
-      ],
-    },
-    stack: ["TypeScript", "Node 24", "Fastify", "SQLite", "viem", "React", "Vite", "Tailwind", "Privy", "Solidity", "Caddy", "systemd"],
-    facts: {
-      id: [["peran", "solo builder + armada agen AI"], ["periode", "Sep – Okt 2026"], ["status", "live · fase uji onchain"], ["repo", "privat · 266 commit"]],
-      en: [["role", "solo builder + AI agent fleet"], ["period", "Sep – Oct 2026"], ["status", "live · onchain test phase"], ["repo", "private · 266 commits"]],
-    },
-  },
-];
-
-const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-
-function renderFeatured() {
-  const host = $("#feats");
-  if (!host) return;
-  const L = (f) => (f && f[lang]) || (f && f.id) || "";
-  host.innerHTML = FEATURED.map((p) => `
-    <article class="feat" id="feat-${p.slug}">
-      <div class="feat__main">
-        <div class="feat__top">
-          ${p.logo ? `<img class="feat__logo" src="${p.logo}" alt="" width="44" height="44" loading="lazy">` : ""}
-          <span class="feat__badge feat__badge--${p.cat}">${p.cat}</span>
-          <span class="feat__badge">${T("feat.private")}</span>
-        </div>
-        <h3>${esc(p.name)}</h3>
-        <p class="feat__tag">${esc(L(p.tagline))}</p>
-        <p class="feat__desc">${esc(L(p.desc))}</p>
-        <ul class="feat__list">${L(p.highlights).map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
-        <div class="feat__stack mono">${p.stack.map((s) => `<span class="feat__chip">${esc(s)}</span>`).join("")}</div>
-      </div>
-      <aside class="feat__side">
-        <dl class="feat__facts mono">${L(p.facts).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
-        <div class="feat__links">
-          ${p.url ? `<a class="link-btn" href="${p.url}" target="_blank" rel="noopener">${T("feat.live")} →</a>` : ""}
-          ${p.docs ? `<a class="link-btn link-btn--dim" href="${p.docs}" target="_blank" rel="noopener">${T("feat.docs")} →</a>` : ""}
-          <a class="link-btn link-btn--dim" href="mailto:ripaldialdo001@gmail.com?subject=${encodeURIComponent(p.name + " — source access")}">${T("feat.source")} →</a>
-        </div>
-      </aside>
-    </article>`).join("");
-}
 
 /* ---------- 3. GitHub API: projects ---------- */
 
@@ -529,7 +438,6 @@ $("#filters").addEventListener("click", (e) => {
       help:
         `<span class="t-hi">perintah tersedia:</span>\n` +
         `  <span class="t-ok">whoami</span>     — tentang saya\n` +
-        `  <span class="t-ok">featured</span>   — studi kasus (termasuk repo privat)\n` +
         `  <span class="t-ok">cv</span>         — CV 60 hari terakhir, dengan pratinjau\n` +
         `  <span class="t-ok">projects</span>   — repo terbaru\n` +
         `  <span class="t-ok">stack</span>      — perkakas andalan\n` +
@@ -563,7 +471,6 @@ $("#filters").addEventListener("click", (e) => {
       help:
         `<span class="t-hi">available commands:</span>\n` +
         `  <span class="t-ok">whoami</span>     — about me\n` +
-        `  <span class="t-ok">featured</span>   — case studies (incl. private repos)\n` +
         `  <span class="t-ok">cv</span>         — last-60-days CV with previews\n` +
         `  <span class="t-ok">projects</span>   — latest repos\n` +
         `  <span class="t-ok">stack</span>      — tools of choice\n` +
@@ -735,12 +642,8 @@ $("#filters").addEventListener("click", (e) => {
       ).join("\n"));
     },
     proyek: () => COMMANDS.projects(),
-    featured: () => print(FEATURED.map((p) =>
-      `<span class="t-hi">▸ ${p.name}</span> <span class="t-dim">— ${(p.tagline[lang] || p.tagline.id)}</span>\n  <span class="t-dim">stack:</span> ${p.stack.join(" · ")}${p.url ? `\n  <a href="${p.url}" target="_blank" rel="noopener">${p.url.replace(/^https?:\/\//, "")}</a>` : ""}`
-    ).join("\n\n")),
-    unggulan: () => COMMANDS.featured(),
-    cv: () => { print(`<span class="t-dim">${lang === "id" ? "membuka cv.html…" : "opening cv.html…"}</span>`); setTimeout(() => location.href = "cv.html", 400); },
-    ls: () => print(`<span class="t-hi">about/  featured/  projects/  terminal/  contact/</span>  <span class="t-dim">.secrets (permission denied)</span>`),
+    cv: () => { print(`<span class="t-dim">${lang === "id" ? "membuka bagian CV…" : "opening the CV section…"}</span>`); setTimeout(() => location.hash = "#cv", 300); },
+    ls: () => print(`<span class="t-hi">about/  cv/  projects/  terminal/  contact/</span>  <span class="t-dim">.secrets (permission denied)</span>`),
     clear: () => { out.innerHTML = ""; },
   };
 
@@ -779,11 +682,10 @@ $("#filters").addEventListener("click", (e) => {
 
   const ACTIONS = () => [
     { label: lang === "id" ? "Lompat → Tentang" : "Jump → About", k: "goto", run: () => location.hash = "#about" },
-    { label: lang === "id" ? "Lompat → Unggulan" : "Jump → Featured", k: "goto", run: () => location.hash = "#featured" },
+    { label: lang === "id" ? "Lompat → CV" : "Jump → CV", k: "goto", run: () => location.hash = "#cv" },
     { label: lang === "id" ? "Lompat → Proyek" : "Jump → Projects", k: "goto", run: () => location.hash = "#projects" },
     { label: lang === "id" ? "Lompat → Terminal" : "Jump → Terminal", k: "goto", run: () => location.hash = "#terminal" },
     { label: lang === "id" ? "Lompat → Kontak" : "Jump → Contact", k: "goto", run: () => location.hash = "#contact" },
-    { label: lang === "id" ? "Buka CV (60 hari terakhir)" : "Open CV (last 60 days)", k: "link", run: () => location.href = "cv.html" },
     { label: lang === "id" ? "Buka profil GitHub" : "Open GitHub profile", k: "link", run: () => open(`https://github.com/${GH_USER}`, "_blank") },
     { label: lang === "id" ? "Salin alamat email" : "Copy email address", k: "aksi", run: () => navigator.clipboard?.writeText("ripaldialdo001@gmail.com") },
     { label: lang === "id" ? "Ganti bahasa (EN/ID)" : "Switch language (EN/ID)", k: "aksi", run: () => $("#lang-toggle").click() },
