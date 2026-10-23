@@ -4,9 +4,9 @@ import Chip from "@/components/Chip.astro";
 import CvTitle from "@/components/islands/CvTitle";
 import SummaryLead from "@/components/islands/SummaryLead";
 import CvStats from "@/components/islands/CvStats";
-import PreviewFrame from "@/components/islands/PreviewFrame";
 import WorkWithMe from "@/components/islands/WorkWithMe";
 import CapabilityFlow from "@/components/islands/CapabilityFlow";
+import WorkCarousel from "@/components/islands/WorkCarousel";
 const mClass = (m: string) => (m ? `maturity m-${m}` : "maturity");
 ---
 <section class="section cv" id="cv">
@@ -28,27 +28,7 @@ const mClass = (m: string) => (m ? `maturity m-${m}` : "maturity");
 
   <section class="cv-sec" id="work">
     <h2 class="cv-sec__title reveal">Work</h2>
-    <div class="cv-work">
-      {cv.work.map((w) => (
-        <article class="cv-item reveal" id={w.id}>
-          <div class="cv-item__body">
-            <div class="cv-item__top">
-              <h3 class="cv-item__name">{w.name}</h3>
-              <span class="cv-item__when">{w.when}</span>
-            </div>
-            <p class="cv-item__role">{w.role}</p>
-            <p class="cv-item__desc" set:html={w.desc} />
-            <ul class="cv-item__list">{w.bullets.map((b) => <li>{b}</li>)}</ul>
-            <div class="cv-item__stack">{w.stack.map((l) => <Chip label={l} />)}</div>
-          </div>
-          <figure class="cv-shot">
-            <PreviewFrame client:visible bar={w.shot.bar}>
-              <img src={w.shot.src} alt={w.shot.alt} loading="lazy" width="1280" height="800" />
-            </PreviewFrame>
-          </figure>
-        </article>
-      ))}
-    </div>
+    <WorkCarousel client:visible items={cv.work} />
   </section>
 
   <section class="cv-sec reveal" id="boilers">
