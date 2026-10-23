@@ -39,7 +39,7 @@
       "id": "crots",
       "name": "Crots",
       "when": "Oct 2026",
-      "role": "founder, full stack, Solana and Robinhood Chain",
+      "role": "client work, full stack, Solana and Robinhood Chain",
       "desc": "<strong>A memecoin launchpad and trading terminal where every coin gets an AI agent.</strong> You launch a coin in a wizard. The coin gets a Crot with its own wallets. The Crot earns the creator fees, posts on X, builds the coin website and buys back, burns and locks. You trade the coin on the same site with your own wallet.",
       "bullets": [
         "Raydium LaunchLab, CPMM and Jupiter on Solana. Doppler and Uniswap v4 on Robinhood Chain. One trade adapter interface for both.",
@@ -69,7 +69,7 @@
       "id": "social-arena",
       "name": "Social Arena",
       "when": "Sep to Oct 2026",
-      "role": "founder, game, economy and chain, Robinhood Chain, 266 commits",
+      "role": "client work, game, economy and chain, Robinhood Chain, 266 commits",
       "desc": "<strong>A fantasy card game about Crypto Twitter creators, settled onchain.</strong> The cards are the top traders on fomo.family, scored by their real engagement on X. Players open packs, upgrade and fuse cards, trade and bid on a market, and fight Classic and Ranked matches. Packs, fees and the market settle in native ETH with one signed transaction per action.",
       "bullets": [
         "Double entry ledger for points and ETH. Every test checks that the books balance to zero.",
@@ -99,7 +99,7 @@
       "id": "rocapad",
       "name": "rocapad",
       "when": "Oct 2026",
-      "role": "founder, SDK, keeper, indexer, web and bot, Solana",
+      "role": "client work, SDK, keeper, indexer, web and bot, Solana",
       "desc": "<strong>A Solana memecoin launchpad built on Orca with no program of its own.</strong> Each coin launches straight into an Orca Whirlpool that holds the whole supply in one locked position. It trades from the first block and creators earn from every trade.",
       "bullets": [
         "TypeScript SDK for launch transactions, pool quotes and swaps, fee collection and split, holder reward allocation, launch validation and account decoders.",
@@ -125,7 +125,7 @@
       "id": "smokesignal",
       "name": "Smoke Signal",
       "when": "Oct 2026",
-      "role": "founder, scanner and site, Robinhood Chain",
+      "role": "client work, scanner and site, Robinhood Chain",
       "desc": "<strong>Scores every new token on the Torch launchpad in seconds.</strong> It reads the fee split, the creator record and the buy flow, and shows the result on a fast ASCII dot site. Tiers are gated by the $SIGNAL balance.",
       "bullets": [
         "One Node process with built in SQLite that uses about 100 MB of RAM. Plain HTML, CSS and JS with no build step.",
@@ -150,7 +150,7 @@
       "id": "karin",
       "name": "Karin",
       "when": "Oct 2026",
-      "role": "token site, swap and admin, Solidity and web, Robinhood Chain",
+      "role": "client work, token site, swap and admin, Solidity and web, Robinhood Chain",
       "desc": "<strong>A tax to yield to buyback token.</strong> Each buy and sell of $KARIN pays a 10% tax in ETH. The treasury changes it to USDG, supplies the Steakhouse USDG vault on Morpho, and spends only the vault yield on buybacks. Each buyback pays the tax again.",
       "bullets": [
         "Landing page, swap panel and admin dashboard. The admin controls the contract address, the trade panel and the site gate at runtime.",
@@ -176,7 +176,7 @@
       "id": "altnero",
       "name": "Altnero",
       "when": "Oct 2026",
-      "role": "chat agent and launchpad, contracts, agent service and web, Robinhood Chain",
+      "role": "client work, chat agent and launchpad, contracts, agent service and web, Robinhood Chain",
       "desc": "<strong>Two products in one repo. A chat trading agent in the style of Bankr and a launchpad in the style of pump.fun.</strong> Users trade, send, launch tokens and place orders by writing to the bot on Telegram, X, Farcaster, a web terminal or an API. Tokens sell on a bonding curve and graduate into a Uniswap v3 WETH pool. The LP position stays locked forever.",
       "bullets": [
         "Custodial wallets with an encrypted keystore or Privy server wallets. Spend limits, confirm codes, TWAP price guards and a signing journal live in plain code outside the model.",
@@ -205,7 +205,7 @@
       "id": "zeebonds",
       "name": "ZeeBonds",
       "when": "Oct 2026",
-      "role": "launchpad web app, Solana",
+      "role": "client work, launchpad web app, Solana",
       "desc": "<strong>A Solana launchpad on Raydium LaunchLab with its own platform config.</strong> Coins launch on LaunchLab bonding curves with platform and creator fees on the curve. They graduate through the Raydium crank into a locked CPMM pool. Creators lock part of their supply before anyone buys.",
       "bullets": [
         "Next.js app with wallet adapter sign in and a React Query data layer. Scripts to create the platform config and smoke test LaunchLab on devnet.",

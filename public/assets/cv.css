@@ -52,9 +52,9 @@
 .cv-item__list li { position: relative; padding-left: 1.1rem; }
 .cv-item__list li::before { content: ""; position: absolute; left: 0.1rem; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
 .cv-item__stack { display: flex; flex-wrap: wrap; gap: 0.45rem; padding-top: 0.35rem; }
-.cv-chip { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--font-mono); font-size: 0.72rem; line-height: 1; padding: 0.38rem 0.65rem 0.38rem 0.55rem; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: var(--panel-soft); transition: border-color 150ms ease, transform 150ms ease; }
+.cv-chip { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--font-mono); font-size: 0.78rem; line-height: 1; padding: 0.45rem 0.8rem 0.45rem 0.6rem; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: var(--panel-soft); transition: border-color 150ms ease, transform 150ms ease; }
 .cv-chip:hover { border-color: var(--dim); transform: translateY(-1px); }
-.cv-chip__i { width: 14px; height: 14px; flex: none; }
+.cv-chip__i { width: 20px; height: 20px; flex: none; }
 .cv-item__links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-family: var(--font-mono); font-size: 0.74rem; }
 .cv-item__links a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
 .cv-item__links a:hover { text-decoration-color: var(--amber); }
@@ -117,3 +117,29 @@
 .aui-flip--dim { color: var(--dim); }
 .aui-flip__face { display: inline-flex; align-items: center; justify-content: center; padding: 0.7rem 1.1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); white-space: nowrap; }
 .aui-flip__face--back { background: var(--amber); color: var(--bg); border-color: var(--amber); }
+
+/* ============ capability workflow ============ */
+.flow { display: grid; grid-template-columns: 1fr; gap: 1.6rem; margin-top: 1.6rem; }
+@media (min-width: 860px) { .flow { grid-template-columns: 340px 1fr; gap: 2.4rem; align-items: start; } }
+.flow__rail { position: relative; list-style: none; margin: 0; padding: 0 0 0 1.9rem; display: grid; gap: 0.25rem; }
+.flow__line { position: absolute; left: 0.95rem; top: 1.2rem; bottom: 1.2rem; width: 2px; background: var(--line); transform: translateX(-50%); }
+.flow__line-fill { position: absolute; left: 0; top: 0; width: 100%; background: var(--amber); }
+.flow__packet { position: absolute; left: 50%; width: 10px; height: 10px; margin-left: -5px; margin-top: -5px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px color-mix(in srgb, var(--amber) 25%, transparent), 0 0 18px var(--amber); }
+.flow__step { position: relative; }
+.flow__btn { position: relative; display: flex; gap: 0.9rem; align-items: flex-start; width: 100%; text-align: left; padding: 0.7rem 0.9rem; border: 0; background: none; color: var(--dim); cursor: pointer; border-radius: var(--radius); font: inherit; }
+.flow__active { position: absolute; inset: 0; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); z-index: 0; }
+.flow__num { position: relative; z-index: 1; flex: none; width: 28px; height: 28px; margin-left: -2.45rem; margin-right: 0.3rem; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); font-size: 0.66rem; color: var(--dim); }
+.flow__step.is-done .flow__num { border-color: var(--amber); color: var(--amber); }
+.flow__step.is-on .flow__num { border-color: var(--amber); background: var(--amber); color: var(--bg); }
+.flow__text { position: relative; z-index: 1; display: grid; gap: 0.1rem; }
+.flow__label { font-weight: 500; color: var(--ink); font-size: 0.95rem; }
+.flow__step:not(.is-on) .flow__label { color: var(--dim); }
+.flow__short { font-size: 0.78rem; color: var(--dim); }
+.flow__panel { position: relative; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 1.6rem 1.7rem 1.7rem; overflow: hidden; min-height: 300px; }
+@media (min-width: 860px) { .flow__panel { position: sticky; top: 5.5rem; } }
+.flow__progress { position: absolute; left: 0; top: 0; right: 0; height: 2px; background: var(--line); }
+.flow__progress-bar { height: 100%; background: var(--amber); transform-origin: 0 50%; }
+.flow__kicker { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.6rem; }
+.flow__title { font-family: var(--font-serif); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 500; letter-spacing: -0.015em; margin-bottom: 0.7rem; }
+.flow__body { color: var(--dim); font-size: 0.94rem; margin-bottom: 1.1rem; }
+.flow__body strong { color: var(--ink); font-weight: 500; }

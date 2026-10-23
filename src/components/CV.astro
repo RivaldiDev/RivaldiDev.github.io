@@ -6,6 +6,7 @@ import SummaryLead from "@/components/islands/SummaryLead";
 import CvStats from "@/components/islands/CvStats";
 import PreviewFrame from "@/components/islands/PreviewFrame";
 import WorkWithMe from "@/components/islands/WorkWithMe";
+import CapabilityFlow from "@/components/islands/CapabilityFlow";
 const mClass = (m: string) => (m ? `maturity m-${m}` : "maturity");
 ---
 <section class="section cv" id="cv">
@@ -21,14 +22,8 @@ const mClass = (m: string) => (m ? `maturity m-${m}` : "maturity");
 
   <section class="cv-sec reveal" id="capabilities">
     <h2 class="cv-sec__title">What I can do</h2>
-    <div class="cv-caps">
-      {cv.capabilities.map((c) => (
-        <div class="cv-cap">
-          <div class="cv-cap__k">{c.k}</div>
-          <div class="cv-cap__v" set:html={c.v} />
-        </div>
-      ))}
-    </div>
+    <p class="cv-lead">Every product goes through the same pipeline. Pick a step to see what I do there.</p>
+    <CapabilityFlow client:visible caps={cv.capabilities} />
   </section>
 
   <section class="cv-sec" id="work">
