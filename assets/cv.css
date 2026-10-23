@@ -31,7 +31,7 @@
 @media (min-width: 860px) { .cv-item { grid-template-columns: 1fr 420px; align-items: start; } }
 
 .cv-shot { margin: 0; order: -1; }
-@media (min-width: 860px) { .cv-shot { order: 0; position: sticky; top: 5rem; } }
+@media (min-width: 860px) { .cv-shot { order: 0; position: sticky; top: 5.5rem; } }
 .cv-shot__frame { display: block; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--panel); transition: border-color 180ms ease, transform 220ms var(--ease-out); }
 .cv-shot__frame:hover { border-color: var(--dim); transform: translateY(-2px); }
 .cv-shot__bar { display: flex; gap: 0.35rem; align-items: center; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--line); background: var(--panel-soft); }
@@ -45,15 +45,16 @@
 .cv-item__name a { color: inherit; }
 .cv-item__name a:hover { color: var(--amber); }
 .cv-item__when { font-family: var(--font-mono); font-size: 0.72rem; color: var(--dim); margin-left: auto; }
-.cv-item__role { font-family: var(--font-mono); font-size: 0.72rem; color: var(--dim); margin-top: -0.4rem; }
+.cv-item__role { font-family: var(--font-mono); font-size: 0.72rem; color: var(--dim); margin-top: -0.5rem; letter-spacing: 0.02em; }
 .cv-item__desc { color: var(--dim); font-size: 0.92rem; max-width: 62ch; }
 .cv-item__desc strong { color: var(--ink); font-weight: 500; }
 .cv-item__list { list-style: none; display: grid; gap: 0.35rem; font-size: 0.88rem; color: var(--dim); }
 .cv-item__list li { position: relative; padding-left: 1.1rem; }
-.cv-item__list li::before { content: "▸"; position: absolute; left: 0; color: var(--sage); font-family: var(--font-mono); }
-.cv-item__stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-.cv-chip { display: inline-flex; align-items: center; gap: 0.38rem; font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.55rem 0.2rem 0.45rem; border: 1px solid var(--line); border-radius: 6px; color: var(--dim); background: var(--panel-soft); }
-.cv-chip__i { width: 12px; height: 12px; flex: none; filter: invert(0.82); opacity: 0.9; }
+.cv-item__list li::before { content: ""; position: absolute; left: 0.1rem; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+.cv-item__stack { display: flex; flex-wrap: wrap; gap: 0.45rem; padding-top: 0.35rem; }
+.cv-chip { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--font-mono); font-size: 0.72rem; line-height: 1; padding: 0.38rem 0.65rem 0.38rem 0.55rem; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: var(--panel-soft); transition: border-color 150ms ease, transform 150ms ease; }
+.cv-chip:hover { border-color: var(--dim); transform: translateY(-1px); }
+.cv-chip__i { width: 14px; height: 14px; flex: none; }
 .cv-item__links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-family: var(--font-mono); font-size: 0.74rem; }
 .cv-item__links a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
 .cv-item__links a:hover { text-decoration-color: var(--amber); }
@@ -76,10 +77,11 @@
 @media (max-width: 720px) { .cv-table th:nth-child(3), .cv-table td:nth-child(3) { display: none; } }
 
 /* stack grid */
-.cv-stack { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
-.cv-stack__g { padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
-.cv-stack__g h4 { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); font-weight: 500; margin-bottom: 0.5rem; }
-.cv-stack__g .cv-item__stack { gap: 0.35rem; }
+.cv-stack { display: grid; }
+.cv-stack__g { display: grid; grid-template-columns: 1fr; gap: 0.5rem 2rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+@media (min-width: 720px) { .cv-stack__g { grid-template-columns: 220px 1fr; align-items: start; } }
+.cv-stack__g h4 { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); font-weight: 500; padding-top: 0.45rem; }
+.cv-stack__g .cv-item__stack { gap: 0.45rem; padding-top: 0; }
 
 .cv-foot { display: flex; padding-top: 2.2rem; }
 .cv-foot__note { font-family: var(--font-mono); font-size: 0.7rem; color: var(--dim); max-width: 60ch; }
