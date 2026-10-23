@@ -530,6 +530,7 @@ $("#filters").addEventListener("click", (e) => {
         `<span class="t-hi">perintah tersedia:</span>\n` +
         `  <span class="t-ok">whoami</span>     — tentang saya\n` +
         `  <span class="t-ok">featured</span>   — studi kasus (termasuk repo privat)\n` +
+        `  <span class="t-ok">cv</span>         — CV 60 hari terakhir, dengan pratinjau\n` +
         `  <span class="t-ok">projects</span>   — repo terbaru\n` +
         `  <span class="t-ok">stack</span>      — perkakas andalan\n` +
         `  <span class="t-ok">contact</span>    — buka jalur komunikasi\n` +
@@ -563,6 +564,7 @@ $("#filters").addEventListener("click", (e) => {
         `<span class="t-hi">available commands:</span>\n` +
         `  <span class="t-ok">whoami</span>     — about me\n` +
         `  <span class="t-ok">featured</span>   — case studies (incl. private repos)\n` +
+        `  <span class="t-ok">cv</span>         — last-60-days CV with previews\n` +
         `  <span class="t-ok">projects</span>   — latest repos\n` +
         `  <span class="t-ok">stack</span>      — tools of choice\n` +
         `  <span class="t-ok">contact</span>    — open a channel\n` +
@@ -737,6 +739,7 @@ $("#filters").addEventListener("click", (e) => {
       `<span class="t-hi">▸ ${p.name}</span> <span class="t-dim">— ${(p.tagline[lang] || p.tagline.id)}</span>\n  <span class="t-dim">stack:</span> ${p.stack.join(" · ")}${p.url ? `\n  <a href="${p.url}" target="_blank" rel="noopener">${p.url.replace(/^https?:\/\//, "")}</a>` : ""}`
     ).join("\n\n")),
     unggulan: () => COMMANDS.featured(),
+    cv: () => { print(`<span class="t-dim">${lang === "id" ? "membuka cv.html…" : "opening cv.html…"}</span>`); setTimeout(() => location.href = "cv.html", 400); },
     ls: () => print(`<span class="t-hi">about/  featured/  projects/  terminal/  contact/</span>  <span class="t-dim">.secrets (permission denied)</span>`),
     clear: () => { out.innerHTML = ""; },
   };
@@ -780,6 +783,7 @@ $("#filters").addEventListener("click", (e) => {
     { label: lang === "id" ? "Lompat → Proyek" : "Jump → Projects", k: "goto", run: () => location.hash = "#projects" },
     { label: lang === "id" ? "Lompat → Terminal" : "Jump → Terminal", k: "goto", run: () => location.hash = "#terminal" },
     { label: lang === "id" ? "Lompat → Kontak" : "Jump → Contact", k: "goto", run: () => location.hash = "#contact" },
+    { label: lang === "id" ? "Buka CV (60 hari terakhir)" : "Open CV (last 60 days)", k: "link", run: () => location.href = "cv.html" },
     { label: lang === "id" ? "Buka profil GitHub" : "Open GitHub profile", k: "link", run: () => open(`https://github.com/${GH_USER}`, "_blank") },
     { label: lang === "id" ? "Salin alamat email" : "Copy email address", k: "aksi", run: () => navigator.clipboard?.writeText("ripaldialdo001@gmail.com") },
     { label: lang === "id" ? "Ganti bahasa (EN/ID)" : "Switch language (EN/ID)", k: "aksi", run: () => $("#lang-toggle").click() },
