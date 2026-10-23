@@ -93,7 +93,7 @@
     <p class="section__sub reveal">What I built and shipped from September to October 2026, with real previews. Updated 23 Oct 2026.</p>
 <section class="cv-sec reveal" id="summary">
       <h2 class="cv-sec__title">Summary</h2>
-      <p class="cv-lead">In the last two months I built and shipped <strong>eight products</strong> and a <strong>toolkit of 15 launchpad repos</strong>, all on Solana and Robinhood Chain. An onchain card game, two memecoin launchpads with trading built in, a launch scanner, a tax token site, a chat trading agent, an auto LP agent and a social trading terminal. Most repos are private. The previews below come from the live sites or from the real code run on my server.</p>
+      <p class="cv-lead">In the last two months I built and shipped <strong>seven products</strong> and a <strong>toolkit of 15 launchpad repos</strong>, all on Solana and Robinhood Chain. An onchain card game, two memecoin launchpads with trading built in, a launch scanner, a tax token site, a chat trading agent and a social trading terminal. Most repos are private. The previews below come from the live sites or from the real code run on my server.</p>
     </section>
 
     <section class="cv-sec reveal" id="capabilities">
@@ -113,7 +113,7 @@
         </div>
         <div class="cv-cap">
           <div class="cv-cap__k">AI agents in production</div>
-          <div class="cv-cap__v"><strong>Agents that hold wallets and act.</strong> A per coin agent that posts on X, trades its coin, builds the coin website and spends creator fees on buybacks. An auto LP agent for Meteora DLMM with a decision log. Chat trading agents with custodial wallets where spend limits, confirm codes and TWAP price guards live in plain code the model cannot change.</div>
+          <div class="cv-cap__v"><strong>Agents that hold wallets and act.</strong> A per coin agent that posts on X, trades its coin, builds the coin website and spends creator fees on buybacks. Chat trading agents with custodial wallets where spend limits, confirm codes and TWAP price guards live in plain code the model cannot change.</div>
         </div>
         <div class="cv-cap">
           <div class="cv-cap__k">Trading UX</div>
@@ -141,9 +141,7 @@
         <article class="cv-item reveal" id="crots">
           <div class="cv-item__body">
             <div class="cv-item__top">
-              <h3 class="cv-item__name"><a href="https://crots.fun" target="_blank" rel="noopener">Crots</a></h3>
-              <span class="badge badge--live">live</span>
-              <span class="badge badge--private">private repo</span>
+              <h3 class="cv-item__name">Crots</h3>
               <span class="cv-item__when">Oct 2026</span>
             </div>
             <p class="cv-item__role">founder, full stack, Solana and Robinhood Chain</p>
@@ -154,23 +152,20 @@
               <li>Crot websites on crots.fun subdomains served by a Cloudflare Worker. Agent models and tools paid per call with x402 USDC.</li>
               <li>The server holds no user keys, only the encrypted keys of the Crot wallets.</li>
             </ul>
-            <div class="cv-item__stack"><span class="cv-chip">React 19</span><span class="cv-chip">Vite</span><span class="cv-chip">Tailwind 4</span><span class="cv-chip">Hono</span><span class="cv-chip">Node 24</span><span class="cv-chip">node:sqlite</span><span class="cv-chip">Jupiter</span><span class="cv-chip">Uniswap v4</span><span class="cv-chip">x402</span><span class="cv-chip">Cloudflare Workers</span></div>
-            <div class="cv-item__links"><a href="https://crots.fun" target="_blank" rel="noopener">crots.fun</a></div>
+            <div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/react.svg" alt="" width="12" height="12" loading="lazy">React 19</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/vite.svg" alt="" width="12" height="12" loading="lazy">Vite</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/tailwindcss.svg" alt="" width="12" height="12" loading="lazy">Tailwind 4</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/hono.svg" alt="" width="12" height="12" loading="lazy">Hono</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/nodedotjs.svg" alt="" width="12" height="12" loading="lazy">Node 24</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/sqlite.svg" alt="" width="12" height="12" loading="lazy">node:sqlite</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-j.svg" alt="" width="12" height="12" loading="lazy">Jupiter</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-u.svg" alt="" width="12" height="12" loading="lazy">Uniswap v4</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-x.svg" alt="" width="12" height="12" loading="lazy">x402</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/cloudflareworkers.svg" alt="" width="12" height="12" loading="lazy">Cloudflare Workers</span></div>
           </div>
           <figure class="cv-shot">
-            <a class="cv-shot__frame" href="https://crots.fun" target="_blank" rel="noopener">
+            <div class="cv-shot__frame">
               <div class="cv-shot__bar"><i></i><i></i><i></i><span>crots.fun</span></div>
               <img src="assets/previews/crots.jpg" alt="Crots home page" loading="lazy" width="1280" height="800">
-            </a>
+            </div>
           </figure>
         </article>
 
         <article class="cv-item reveal" id="social-arena">
           <div class="cv-item__body">
             <div class="cv-item__top">
-              <h3 class="cv-item__name"><a href="https://www.socialsarena.xyz" target="_blank" rel="noopener">Social Arena</a></h3>
-              <span class="badge badge--preview">preview</span>
-              <span class="badge badge--private">private repo</span>
+              <h3 class="cv-item__name">Social Arena</h3>
               <span class="cv-item__when">Sep to Oct 2026</span>
             </div>
             <p class="cv-item__role">founder, game, economy and chain, Robinhood Chain, 266 commits</p>
@@ -181,14 +176,13 @@
               <li>Ranked ladder with seasons, an arena queue with live players or bots, server side turn based fights, clans with a ladder, and events with prize pools.</li>
               <li>Separate admin panel, a player book, a hardened VPS with Caddy, systemd timers and backups.</li>
             </ul>
-            <div class="cv-item__stack"><span class="cv-chip">TypeScript</span><span class="cv-chip">Fastify</span><span class="cv-chip">node:sqlite</span><span class="cv-chip">viem</span><span class="cv-chip">React</span><span class="cv-chip">Vite</span><span class="cv-chip">Privy</span><span class="cv-chip">Solidity</span><span class="cv-chip">VitePress</span><span class="cv-chip">Caddy</span></div>
-            <div class="cv-item__links"><a href="https://www.socialsarena.xyz" target="_blank" rel="noopener">socialsarena.xyz</a><a href="https://www.socialsarena.xyz/docs" target="_blank" rel="noopener">player book</a></div>
+            <div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/typescript.svg" alt="" width="12" height="12" loading="lazy">TypeScript</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fastify.svg" alt="" width="12" height="12" loading="lazy">Fastify</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/sqlite.svg" alt="" width="12" height="12" loading="lazy">node:sqlite</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-v.svg" alt="" width="12" height="12" loading="lazy">viem</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/react.svg" alt="" width="12" height="12" loading="lazy">React</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/vite.svg" alt="" width="12" height="12" loading="lazy">Vite</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-p.svg" alt="" width="12" height="12" loading="lazy">Privy</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/solidity.svg" alt="" width="12" height="12" loading="lazy">Solidity</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/vitepress.svg" alt="" width="12" height="12" loading="lazy">VitePress</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/caddy.svg" alt="" width="12" height="12" loading="lazy">Caddy</span></div>
           </div>
           <figure class="cv-shot">
-            <a class="cv-shot__frame" href="https://www.socialsarena.xyz" target="_blank" rel="noopener">
+            <div class="cv-shot__frame">
               <div class="cv-shot__bar"><i></i><i></i><i></i><span>socialsarena.xyz</span></div>
               <img src="assets/previews/social-arena.jpg" alt="Social Arena home page" loading="lazy" width="1280" height="800">
-            </a>
+            </div>
           </figure>
         </article>
 
@@ -196,8 +190,6 @@
           <div class="cv-item__body">
             <div class="cv-item__top">
               <h3 class="cv-item__name">rocapad</h3>
-              <span class="badge badge--preview">preview</span>
-              <span class="badge badge--private">private repo</span>
               <span class="cv-item__when">Oct 2026</span>
             </div>
             <p class="cv-item__role">founder, SDK, keeper, indexer, web and bot, Solana</p>
@@ -208,7 +200,7 @@
               <li>Postgres indexer and JSON API with lists, 24h change, charts, trades, milestones, fee ledger, creator earnings, holders and platform stats.</li>
               <li>Next.js app with a live market terminal, creator dashboard and admin. A grammY Telegram bot with custodial wallets and pool trading.</li>
             </ul>
-            <div class="cv-item__stack"><span class="cv-chip">Next.js</span><span class="cv-chip">@solana/kit</span><span class="cv-chip">Orca Whirlpools</span><span class="cv-chip">Postgres</span><span class="cv-chip">grammY</span><span class="cv-chip">lightweight-charts</span></div>
+            <div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/nextdotjs.svg" alt="" width="12" height="12" loading="lazy">Next.js</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/solana.svg" alt="" width="12" height="12" loading="lazy">@solana/kit</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-o.svg" alt="" width="12" height="12" loading="lazy">Orca Whirlpools</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/postgresql.svg" alt="" width="12" height="12" loading="lazy">Postgres</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-g.svg" alt="" width="12" height="12" loading="lazy">grammY</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/tradingview.svg" alt="" width="12" height="12" loading="lazy">lightweight-charts</span></div>
           </div>
           <figure class="cv-shot">
             <div class="cv-shot__frame">
@@ -222,8 +214,6 @@
           <div class="cv-item__body">
             <div class="cv-item__top">
               <h3 class="cv-item__name">Smoke Signal</h3>
-              <span class="badge badge--preview">preview</span>
-              <span class="badge badge--private">private repo</span>
               <span class="cv-item__when">Oct 2026</span>
             </div>
             <p class="cv-item__role">founder, scanner and site, Robinhood Chain</p>
@@ -233,7 +223,7 @@
               <li>WebGL2 ASCII dot field, server sent events for live signals, Telegram channel posts and wallet sign in with viem.</li>
               <li>The scanner backs off when the source is busy. A systemd unit and a Cloudflare tunnel for deploy.</li>
             </ul>
-            <div class="cv-item__stack"><span class="cv-chip">Node 22</span><span class="cv-chip">SQLite</span><span class="cv-chip">WebGL2</span><span class="cv-chip">SSE</span><span class="cv-chip">viem</span><span class="cv-chip">sharp</span></div>
+            <div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/nodedotjs.svg" alt="" width="12" height="12" loading="lazy">Node 22</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/sqlite.svg" alt="" width="12" height="12" loading="lazy">SQLite</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/webgl.svg" alt="" width="12" height="12" loading="lazy">WebGL2</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-s.svg" alt="" width="12" height="12" loading="lazy">SSE</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-v.svg" alt="" width="12" height="12" loading="lazy">viem</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/sharp.svg" alt="" width="12" height="12" loading="lazy">sharp</span></div>
           </div>
           <figure class="cv-shot">
             <div class="cv-shot__frame">
@@ -247,8 +237,6 @@
           <div class="cv-item__body">
             <div class="cv-item__top">
               <h3 class="cv-item__name">Karin</h3>
-              <span class="badge badge--preview">preview</span>
-              <span class="badge badge--private">private repo</span>
               <span class="cv-item__when">Oct 2026</span>
             </div>
             <p class="cv-item__role">token site, swap and admin, Solidity and web, Robinhood Chain</p>
@@ -259,7 +247,7 @@
               <li>Rate limits per IP, auto bans that grow from 1 hour to 24 hours to 7 days, attack path probes, and bans that survive a restart.</li>
               <li>A live test that simulates a buy and a sell on mainnet without sending transactions.</li>
             </ul>
-            <div class="cv-item__stack"><span class="cv-chip">Solidity</span><span class="cv-chip">Vite</span><span class="cv-chip">React 18</span><span class="cv-chip">viem 2</span><span class="cv-chip">Morpho</span><span class="cv-chip">Upstash</span></div>
+            <div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/solidity.svg" alt="" width="12" height="12" loading="lazy">Solidity</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/vite.svg" alt="" width="12" height="12" loading="lazy">Vite</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/react.svg" alt="" width="12" height="12" loading="lazy">React 18</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-v.svg" alt="" width="12" height="12" loading="lazy">viem 2</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-m.svg" alt="" width="12" height="12" loading="lazy">Morpho</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/upstash.svg" alt="" width="12" height="12" loading="lazy">Upstash</span></div>
           </div>
           <figure class="cv-shot">
             <div class="cv-shot__frame">
@@ -273,8 +261,6 @@
           <div class="cv-item__body">
             <div class="cv-item__top">
               <h3 class="cv-item__name">Altnero</h3>
-              <span class="badge badge--preview">preview</span>
-              <span class="badge badge--private">private repo</span>
               <span class="cv-item__when">Oct 2026</span>
             </div>
             <p class="cv-item__role">chat agent and launchpad, contracts, agent service and web, Robinhood Chain</p>
@@ -284,7 +270,7 @@
               <li>Foundry contracts for the Launchpad, LaunchToken and deployer, with a deploy script, fork tests and an internal audit in the repo.</li>
               <li>Agent service with channels, a parser, a pipeline, a keeper for limit, stop, DCA and TWAP orders, an indexer, an HTTP API and a CLI.</li>
             </ul>
-            <div class="cv-item__stack"><span class="cv-chip">Foundry</span><span class="cv-chip">Solidity</span><span class="cv-chip">Node 24</span><span class="cv-chip">Vite</span><span class="cv-chip">React 18</span><span class="cv-chip">viem</span><span class="cv-chip">Privy</span><span class="cv-chip">Telegram, X, Farcaster</span></div>
+            <div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-f.svg" alt="" width="12" height="12" loading="lazy">Foundry</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/solidity.svg" alt="" width="12" height="12" loading="lazy">Solidity</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/nodedotjs.svg" alt="" width="12" height="12" loading="lazy">Node 24</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/vite.svg" alt="" width="12" height="12" loading="lazy">Vite</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/react.svg" alt="" width="12" height="12" loading="lazy">React 18</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-v.svg" alt="" width="12" height="12" loading="lazy">viem</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-p.svg" alt="" width="12" height="12" loading="lazy">Privy</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/telegram.svg" alt="" width="12" height="12" loading="lazy">Telegram</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/x.svg" alt="" width="12" height="12" loading="lazy">X</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/farcaster.svg" alt="" width="12" height="12" loading="lazy">Farcaster</span></div>
           </div>
           <figure class="cv-shot">
             <div class="cv-shot__frame">
@@ -298,8 +284,6 @@
           <div class="cv-item__body">
             <div class="cv-item__top">
               <h3 class="cv-item__name">ZeeBonds</h3>
-              <span class="badge badge--preview">preview</span>
-              <span class="badge badge--private">private repo</span>
               <span class="cv-item__when">Oct 2026</span>
             </div>
             <p class="cv-item__role">launchpad web app, Solana</p>
@@ -308,7 +292,7 @@
               <li>Next.js app with wallet adapter sign in and a React Query data layer. Scripts to create the platform config and smoke test LaunchLab on devnet.</li>
               <li>Listed as a mainnet proof of the Solana launchpad base in my boiler index.</li>
             </ul>
-            <div class="cv-item__stack"><span class="cv-chip">Next.js</span><span class="cv-chip">Raydium SDK v2</span><span class="cv-chip">@solana/web3.js</span><span class="cv-chip">wallet-adapter</span><span class="cv-chip">React Query</span></div>
+            <div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/nextdotjs.svg" alt="" width="12" height="12" loading="lazy">Next.js</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-r.svg" alt="" width="12" height="12" loading="lazy">Raydium SDK v2</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/solana.svg" alt="" width="12" height="12" loading="lazy">@solana/web3.js</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-w.svg" alt="" width="12" height="12" loading="lazy">wallet-adapter</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/reactquery.svg" alt="" width="12" height="12" loading="lazy">React Query</span></div>
           </div>
           <figure class="cv-shot">
             <div class="cv-shot__frame">
@@ -318,31 +302,6 @@
           </figure>
         </article>
 
-        <article class="cv-item reveal" id="meridian">
-          <div class="cv-item__body">
-            <div class="cv-item__top">
-              <h3 class="cv-item__name"><a href="https://agentmeridian.xyz" target="_blank" rel="noopener">Meridian</a></h3>
-              <span class="badge badge--live">live</span>
-              <span class="badge badge--public">open source</span>
-              <span class="cv-item__when">Oct 2026</span>
-            </div>
-            <p class="cv-item__role">auto LP agent, Solana, Meteora DLMM</p>
-            <p class="cv-item__desc"><strong>An auto liquidity agent for Meteora DLMM, run by LLMs.</strong> It screens pools against set thresholds, deploys capital, watches positions, claims fees and closes on live PnL, yield and range data. It learns from every position it closes.</p>
-            <ul class="cv-item__list">
-              <li>A ReAct agent loop. A screening agent runs every 30 minutes and a management agent every 10 minutes, each with its own tools.</li>
-              <li>A decision log of deployments, closes and skips with reasons, risks and rejected options, fed back into the prompt.</li>
-              <li>Telegram chat and reports, a Discord signal listener, and Claude Code slash commands.</li>
-            </ul>
-            <div class="cv-item__stack"><span class="cv-chip">Node</span><span class="cv-chip">Meteora DLMM</span><span class="cv-chip">Helius</span><span class="cv-chip">Telegram</span><span class="cv-chip">LLM tool use</span></div>
-            <div class="cv-item__links"><a href="https://agentmeridian.xyz" target="_blank" rel="noopener">agentmeridian.xyz</a><a href="https://github.com/RivaldiDev/meridian" target="_blank" rel="noopener">source</a></div>
-          </div>
-          <figure class="cv-shot">
-            <a class="cv-shot__frame" href="https://agentmeridian.xyz" target="_blank" rel="noopener">
-              <div class="cv-shot__bar"><i></i><i></i><i></i><span>agentmeridian.xyz</span></div>
-              <img src="assets/previews/meridian.jpg" alt="Meridian landing page" loading="lazy" width="1280" height="800">
-            </a>
-          </figure>
-        </article>
 
       </div>
     </section>
@@ -375,13 +334,13 @@
     <section class="cv-sec reveal" id="stack">
       <h2 class="cv-sec__title">Stack</h2>
       <div class="cv-stack">
-        <div class="cv-stack__g"><h4>Languages</h4><p>TypeScript end to end, Solidity, Python for data and bots, Lua</p></div>
-        <div class="cv-stack__g"><h4>Chains</h4><p>Solana, Robinhood Chain (Arbitrum Orbit), Ethereum, Base, BSC, NEAR, LayerZero</p></div>
-        <div class="cv-stack__g"><h4>DeFi rails</h4><p>Uniswap v3 and v4, Permit2, Doppler, Raydium LaunchLab and CPMM, Orca Whirlpools, Meteora DBC and DLMM, Jupiter, Morpho, Squads</p></div>
-        <div class="cv-stack__g"><h4>Backend</h4><p>Node 24, Fastify, Hono, node:sqlite, Postgres, viem, @solana/kit, Foundry, Cloudflare Workers</p></div>
-        <div class="cv-stack__g"><h4>Frontend</h4><p>React 18 and 19, Vite, Next.js, Tailwind 4, shadcn/ui, Radix, lightweight-charts, WebGL2</p></div>
-        <div class="cv-stack__g"><h4>Agents and AI</h4><p>Claude Code and agent skills, tool use loops, x402 payments, Telegram with grammY, X, Farcaster, Discord</p></div>
-        <div class="cv-stack__g"><h4>Ops</h4><p>Debian VPS, Caddy, systemd, ufw, fail2ban, Cloudflare tunnels, Vercel, Privy, Upstash</p></div>
+        <div class="cv-stack__g"><h4>Languages</h4><div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/typescript.svg" alt="" width="12" height="12" loading="lazy">TypeScript</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/solidity.svg" alt="" width="12" height="12" loading="lazy">Solidity</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/python.svg" alt="" width="12" height="12" loading="lazy">Python</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/lua.svg" alt="" width="12" height="12" loading="lazy">Lua</span></div></div>
+        <div class="cv-stack__g"><h4>Chains</h4><div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/solana.svg" alt="" width="12" height="12" loading="lazy">Solana</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/robinhood.svg" alt="" width="12" height="12" loading="lazy">Robinhood Chain</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/ethereum.svg" alt="" width="12" height="12" loading="lazy">Ethereum</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-b.svg" alt="" width="12" height="12" loading="lazy">Base</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/bnbchain.svg" alt="" width="12" height="12" loading="lazy">BSC</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/near.svg" alt="" width="12" height="12" loading="lazy">NEAR</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-l.svg" alt="" width="12" height="12" loading="lazy">LayerZero</span></div></div>
+        <div class="cv-stack__g"><h4>DeFi rails</h4><div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-u.svg" alt="" width="12" height="12" loading="lazy">Uniswap v3 and v4</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-p.svg" alt="" width="12" height="12" loading="lazy">Permit2</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-d.svg" alt="" width="12" height="12" loading="lazy">Doppler</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-r.svg" alt="" width="12" height="12" loading="lazy">Raydium</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-o.svg" alt="" width="12" height="12" loading="lazy">Orca Whirlpools</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-m.svg" alt="" width="12" height="12" loading="lazy">Meteora</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-j.svg" alt="" width="12" height="12" loading="lazy">Jupiter</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-m.svg" alt="" width="12" height="12" loading="lazy">Morpho</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-s.svg" alt="" width="12" height="12" loading="lazy">Squads</span></div></div>
+        <div class="cv-stack__g"><h4>Backend</h4><div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/nodedotjs.svg" alt="" width="12" height="12" loading="lazy">Node 24</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fastify.svg" alt="" width="12" height="12" loading="lazy">Fastify</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/hono.svg" alt="" width="12" height="12" loading="lazy">Hono</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/sqlite.svg" alt="" width="12" height="12" loading="lazy">node:sqlite</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/postgresql.svg" alt="" width="12" height="12" loading="lazy">Postgres</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-v.svg" alt="" width="12" height="12" loading="lazy">viem</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/solana.svg" alt="" width="12" height="12" loading="lazy">@solana/kit</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-f.svg" alt="" width="12" height="12" loading="lazy">Foundry</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/cloudflareworkers.svg" alt="" width="12" height="12" loading="lazy">Cloudflare Workers</span></div></div>
+        <div class="cv-stack__g"><h4>Frontend</h4><div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/react.svg" alt="" width="12" height="12" loading="lazy">React</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/vite.svg" alt="" width="12" height="12" loading="lazy">Vite</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/nextdotjs.svg" alt="" width="12" height="12" loading="lazy">Next.js</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/tailwindcss.svg" alt="" width="12" height="12" loading="lazy">Tailwind 4</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/shadcnui.svg" alt="" width="12" height="12" loading="lazy">shadcn/ui</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/radixui.svg" alt="" width="12" height="12" loading="lazy">Radix</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/tradingview.svg" alt="" width="12" height="12" loading="lazy">lightweight-charts</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/webgl.svg" alt="" width="12" height="12" loading="lazy">WebGL2</span></div></div>
+        <div class="cv-stack__g"><h4>Agents and AI</h4><div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-c.svg" alt="" width="12" height="12" loading="lazy">Claude Code</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-x.svg" alt="" width="12" height="12" loading="lazy">x402</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/telegram.svg" alt="" width="12" height="12" loading="lazy">Telegram</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/x.svg" alt="" width="12" height="12" loading="lazy">X</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/farcaster.svg" alt="" width="12" height="12" loading="lazy">Farcaster</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/discord.svg" alt="" width="12" height="12" loading="lazy">Discord</span></div></div>
+        <div class="cv-stack__g"><h4>Ops</h4><div class="cv-item__stack"><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/debian.svg" alt="" width="12" height="12" loading="lazy">Debian</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/caddy.svg" alt="" width="12" height="12" loading="lazy">Caddy</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-s.svg" alt="" width="12" height="12" loading="lazy">systemd</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-u.svg" alt="" width="12" height="12" loading="lazy">ufw</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-f.svg" alt="" width="12" height="12" loading="lazy">fail2ban</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/cloudflare.svg" alt="" width="12" height="12" loading="lazy">Cloudflare tunnels</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/vercel.svg" alt="" width="12" height="12" loading="lazy">Vercel</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/fb-p.svg" alt="" width="12" height="12" loading="lazy">Privy</span><span class="cv-chip"><img class="cv-chip__i" src="assets/icons/upstash.svg" alt="" width="12" height="12" loading="lazy">Upstash</span></div></div>
       </div>
     </section>
     <div class="cv-foot reveal">

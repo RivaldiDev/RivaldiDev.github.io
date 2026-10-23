@@ -52,7 +52,8 @@
 .cv-item__list li { position: relative; padding-left: 1.1rem; }
 .cv-item__list li::before { content: "▸"; position: absolute; left: 0; color: var(--sage); font-family: var(--font-mono); }
 .cv-item__stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-.cv-chip { font-family: var(--font-mono); font-size: 0.68rem; padding: 0.15rem 0.5rem; border: 1px solid var(--line); border-radius: 6px; color: var(--dim); background: var(--panel-soft); }
+.cv-chip { display: inline-flex; align-items: center; gap: 0.38rem; font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.55rem 0.2rem 0.45rem; border: 1px solid var(--line); border-radius: 6px; color: var(--dim); background: var(--panel-soft); }
+.cv-chip__i { width: 12px; height: 12px; flex: none; filter: invert(0.82); opacity: 0.9; }
 .cv-item__links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-family: var(--font-mono); font-size: 0.74rem; }
 .cv-item__links a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
 .cv-item__links a:hover { text-decoration-color: var(--amber); }
@@ -75,10 +76,10 @@
 @media (max-width: 720px) { .cv-table th:nth-child(3), .cv-table td:nth-child(3) { display: none; } }
 
 /* stack grid */
-.cv-stack { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+.cv-stack { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
 .cv-stack__g { padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
 .cv-stack__g h4 { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); font-weight: 500; margin-bottom: 0.5rem; }
-.cv-stack__g p { font-size: 0.86rem; color: var(--ink); }
+.cv-stack__g .cv-item__stack { gap: 0.35rem; }
 
 .cv-foot { display: flex; padding-top: 2.2rem; }
 .cv-foot__note { font-family: var(--font-mono); font-size: 0.7rem; color: var(--dim); max-width: 60ch; }
