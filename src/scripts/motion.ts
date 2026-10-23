@@ -72,7 +72,7 @@ if (!reduced) {
     tl.from(item.querySelector(".cv-item__top"), { y: 24, opacity: 0, duration: 0.7 })
       .from(item.querySelectorAll(".cv-item__role, .cv-item__desc"), { y: 18, opacity: 0, stagger: 0.08, duration: 0.6 }, "-=0.4")
       .from(item.querySelectorAll(".cv-item__list li"), { x: -16, opacity: 0, stagger: 0.07, duration: 0.5 }, "-=0.3")
-      .from(item.querySelectorAll(".cv-chip"), { scale: 0.7, opacity: 0, stagger: 0.035, duration: 0.4, ease: "back.out(2)" }, "-=0.3")
+      .fromTo(item.querySelectorAll(".cv-chip"), { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.035, duration: 0.4, ease: "back.out(2)", clearProps: "transform,opacity" }, "-=0.3")
       .from(item.querySelector(".cv-shot"), { y: 60, opacity: 0, scale: 0.96, duration: 1.1, ease: "power4.out" }, 0.1);
     // gentle parallax on the screenshot while the entry scrolls past
     const img = item.querySelector<HTMLElement>(".cv-shot img");
@@ -86,13 +86,11 @@ if (!reduced) {
   // stack rows and their chips
   document.querySelectorAll<HTMLElement>(".cv-stack__g").forEach((g) => {
     const tl = gsap.timeline({ scrollTrigger: { trigger: g, start: "top 90%", once: true } });
-    tl.from(g, { opacity: 0, y: 16, duration: 0.5 }).from(g.querySelectorAll(".cv-chip"), { scale: 0.7, opacity: 0, stagger: 0.03, duration: 0.4, ease: "back.out(2)" }, "-=0.25");
+    tl.from(g, { opacity: 0, y: 16, duration: 0.5 }).fromTo(g.querySelectorAll(".cv-chip"), { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.03, duration: 0.4, ease: "back.out(2)", clearProps: "transform,opacity" }, "-=0.25");
   });
 
   // terminal, contact and the rest of the generic reveals
   enter(".term", { y: 40, opacity: 0, scale: 0.98, duration: 1 }, document.querySelector(".term"));
-  enter(".section--contact .hero__cta .link-btn", { y: 16, opacity: 0, stagger: 0.1 }, document.querySelector(".section--contact"), "top 75%");
-  enter(".cv-foot .link-btn", { y: 16, opacity: 0 }, document.querySelector(".cv-foot"), "top 92%");
 
   // GitHub project cards render later from the API: animate them when they land
   const grid = document.getElementById("projects-grid");
