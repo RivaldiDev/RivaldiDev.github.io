@@ -1,0 +1,33 @@
+---
+const { title = "Rivaldi — Vibecoder · AI Agentic · Web3", description = "Rivaldi — vibecoder, developer AI agentic, dan penggemar Web3. Membangun dasbor onchain, alat berbasis AI, dan perangkat lunak bersama agen." } = Astro.props as { title?: string; description?: string };
+---
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#0f0f0d" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rivaldidev.work/" />
+  <meta property="og:image" content="https://rivaldidev.work/assets/previews/crots.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%2317150f'/%3E%3Ctext x='50' y='70' font-size='56' text-anchor='middle' fill='%23faf8f4' font-family='Georgia,serif'%3ER%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="stylesheet" href="/assets/cv.css" />
+  <link rel="stylesheet" href="/assets/motion.css" />
+</head>
+<body>
+  <slot />
+  <script is:inline src="/assets/app.js" defer></script>
+  <script>
+    import "@/scripts/motion";
+  </script>
+</body>
+</html>

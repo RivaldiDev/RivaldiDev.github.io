@@ -1,0 +1,79 @@
+---
+import cv from "@/data/cv.json";
+import Chip from "@/components/Chip.astro";
+const mClass = (m: string) => (m ? `maturity m-${m}` : "maturity");
+---
+<section class="section cv" id="cv">
+  <p class="section__index mono reveal">02 CV</p>
+  <h2 class="section__title reveal">The last 60 days</h2>
+  <p class="section__sub reveal">What I built and shipped from September to October 2026, with real previews. Updated 23 Oct 2026.</p>
+
+  <section class="cv-sec reveal" id="summary">
+    <h2 class="cv-sec__title">Summary</h2>
+    <p class="cv-lead" set:html={cv.summary} />
+  </section>
+
+  <section class="cv-sec reveal" id="capabilities">
+    <h2 class="cv-sec__title">What I can do</h2>
+    <div class="cv-caps">
+      {cv.capabilities.map((c) => (
+        <div class="cv-cap">
+          <div class="cv-cap__k">{c.k}</div>
+          <div class="cv-cap__v" set:html={c.v} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="cv-sec" id="work">
+    <h2 class="cv-sec__title reveal">Work</h2>
+    <div class="cv-work">
+      {cv.work.map((w) => (
+        <article class="cv-item reveal" id={w.id}>
+          <div class="cv-item__body">
+            <div class="cv-item__top">
+              <h3 class="cv-item__name">{w.name}</h3>
+              <span class="cv-item__when">{w.when}</span>
+            </div>
+            <p class="cv-item__role">{w.role}</p>
+            <p class="cv-item__desc" set:html={w.desc} />
+            <ul class="cv-item__list">{w.bullets.map((b) => <li>{b}</li>)}</ul>
+            <div class="cv-item__stack">{w.stack.map((l) => <Chip label={l} />)}</div>
+          </div>
+          <figure class="cv-shot">
+            <div class="cv-shot__frame">
+              <div class="cv-shot__bar"><i></i><i></i><i></i><span>{w.shot.bar}</span></div>
+              <img src={w.shot.src} alt={w.shot.alt} loading="lazy" width="1280" height="800" />
+            </div>
+          </figure>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="cv-sec reveal" id="boilers">
+    <h2 class="cv-sec__title">Launchpad building blocks</h2>
+    <p class="cv-lead" set:html={cv.boilersLead} />
+    <table class="cv-table" style="margin-top:1.4rem">
+      <thead><tr><th>Boiler</th><th>Layer and network</th><th>What it gives you</th><th>Maturity</th></tr></thead>
+      <tbody>
+        {cv.boilers.map((r) => (
+          <tr><td>{r.name}</td><td>{r.layer}</td><td>{r.what}</td><td class={mClass(r.maturity)}>{r.maturity}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="cv-sec reveal" id="stack">
+    <h2 class="cv-sec__title">Stack</h2>
+    <div class="cv-stack">
+      {cv.stack.map((g) => (
+        <div class="cv-stack__g"><h4>{g.name}</h4><div class="cv-item__stack">{g.items.map((l) => <Chip label={l} />)}</div></div>
+      ))}
+    </div>
+  </section>
+
+  <div class="cv-foot reveal">
+    <a class="link-btn" href="mailto:ripaldialdo001@gmail.com?subject=Project%20inquiry">Work with me</a>
+  </div>
+</section>

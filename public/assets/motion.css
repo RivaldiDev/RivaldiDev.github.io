@@ -1,0 +1,9 @@
+/* GSAP takes over the entrance animations: neutralise the CSS reveal so nothing animates twice */
+html.gsap .reveal { opacity: 1; transform: none; transition: none; }
+html.gsap .hero > .reveal { transition-delay: 0s; }
+html.gsap .hero__title { perspective: 800px; }
+html.gsap .hero__title .w { display: inline-block; will-change: transform; }
+html.gsap .cv-shot { will-change: transform; }
+html.gsap .cv-shot__frame { overflow: hidden; }
+html.gsap .cv-shot img { will-change: transform; }
+html.gsap .footer-big span { animation-play-state: running; }

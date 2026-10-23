@@ -1,30 +1,9 @@
-# rivaldi.dev — portfolio
+# rivaldidev.work
 
-> **Vibecoder · Full AI Agentic · Web3 Enthusiast**
+Portfolio and last-60-days CV. Astro static site with GSAP motion, served from a VPS behind a Cloudflare tunnel.
 
-Live at **[rivaldidev.github.io](https://rivaldidev.github.io)** — zero frameworks, zero build steps, zero dependencies. Modern web platform + GitHub Pages.
+- `src/` pages, components, `data/cv.json` (CV content) and `scripts/motion.ts` (GSAP)
+- `public/assets/` stylesheets, `app.js` (i18n, GitHub projects, terminal, palette), previews and icons
+- `npm run dev` for local work, `npm run build` writes `dist/`
 
-## Features
-
-- **Bilingual** — Bahasa Indonesia by default, English toggle (persisted in `localStorage`)
-- **Live GitHub API integration** — the projects grid renders itself from `api.github.com` on every page load. Push a new repo → it appears on the site.
-- **Interactive terminal** — a real shell visitors can type into (`help`, `whoami`, `projects`, …), fully bilingual
-- **Command palette** — `Ctrl+K`
-- **Editorial design** — warm paper tones, Fraunces serif, restrained single accent, custom 404
-- **Accessible** — respects `prefers-reduced-motion`, semantic HTML, keyboard navigable
-
-## Stack
-
-| Layer | Choice |
-|---|---|
-| Framework | none — the platform is the framework |
-| Build step | none — push = deploy |
-| Hosting | GitHub Pages |
-| Data | GitHub REST API (client-side) |
-| Fonts | Fraunces · Inter · JetBrains Mono |
-
-## Deploy
-
-```bash
-git push origin master   # that's it. that's the pipeline.
-```
+Deploy: a post-commit hook runs `portfolio-deploy`, which builds and syncs `dist/` to the folder the site service serves. The root `index.html` only redirects the old GitHub Pages address to the domain.

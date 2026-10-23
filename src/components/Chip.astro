@@ -1,0 +1,5 @@
+---
+import { iconFor } from "@/data/icons";
+const { label } = Astro.props as { label: string };
+---
+<span class="cv-chip"><img class="cv-chip__i" src={iconFor(label)} alt="" width="14" height="14" loading="lazy" />{label}</span>
