@@ -1,4 +1,6 @@
 ---
+import "@/styles/tailwind.css";
+import TopProgress from "@/components/islands/TopProgress";
 const { title = "Rivaldi — Vibecoder · AI Agentic · Web3", description = "Rivaldi — vibecoder, developer AI agentic, dan penggemar Web3. Membangun dasbor onchain, alat berbasis AI, dan perangkat lunak bersama agen." } = Astro.props as { title?: string; description?: string };
 ---
 <!doctype html>
@@ -24,6 +26,7 @@ const { title = "Rivaldi — Vibecoder · AI Agentic · Web3", description = "Ri
   <link rel="stylesheet" href="/assets/motion.css" />
 </head>
 <body>
+  <TopProgress client:idle />
   <slot />
   <script is:inline src="/assets/app.js" defer></script>
   <script>

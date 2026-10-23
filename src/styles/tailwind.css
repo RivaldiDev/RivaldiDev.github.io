@@ -1,0 +1,19 @@
+/* Tailwind v4 utilities for the animate-ui components, without preflight so the site's own CSS stays untouched */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "../components";
+@source "../../node_modules/@animate-ui/react";
+
+@theme inline {
+  --color-background: #0f0f0d;
+  --color-foreground: #eae8e1;
+  --color-primary: #d9a441;
+  --color-primary-foreground: #0f0f0d;
+  --color-muted: #1c1c19;
+  --color-muted-foreground: #98958d;
+  --color-border: #2a2925;
+  --color-accent: #85b79d;
+  --color-accent-foreground: #0f0f0d;
+  --radius: 10px;
+}

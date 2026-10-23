@@ -1,4 +1,6 @@
 import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://rivaldidev.work",
@@ -6,4 +8,6 @@ export default defineConfig({
   trailingSlash: "never",
   build: { format: "file", inlineStylesheets: "auto" },
   compressHTML: true,
+  integrations: [react()],
+  vite: { plugins: [tailwindcss()] },
 });

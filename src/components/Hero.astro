@@ -1,9 +1,12 @@
 ---
+import HeroStars from "@/components/islands/HeroStars";
+import RoleTyping from "@/components/islands/RoleTyping";
 ---
 <header class="hero" id="top">
+    <HeroStars client:idle />
     <p class="eyebrow mono reveal" data-i18n="hero.eyebrow">Portofolio</p>
     <h1 class="hero__title reveal" data-i18n="hero.title">Membangun web baru,<br>bersama <em>agen AI</em>.</h1>
-    <p class="hero__role mono reveal"><span id="role-scramble">vibecoder</span><span class="scr-cursor">▊</span></p>
+    <p class="hero__role mono reveal"><RoleTyping client:load /></p>
     <p class="hero__lead reveal" data-i18n="hero.lead">
       Saya <strong>Rivaldi</strong> — developer dari Indonesia. Dasbor onchain,
       alat berbasis AI, dan eksperimen web3: dirakit cepat, dirilis rapi.

@@ -1,11 +1,9 @@
 ---
+import ContactButtons from "@/components/islands/ContactButtons";
 ---
 <section class="section section--contact" id="contact">
     <p class="section__index mono reveal" data-i18n="contact.index">05 Kontak</p>
     <h2 class="section__title section__title--big reveal" data-i18n="contact.title">Punya ide?<br><em>Mari kita wujudkan.</em></h2>
     <p class="section__sub reveal" data-i18n="contact.sub">Terbuka untuk kolaborasi, proyek lepas, dan eksperimen onchain yang menarik.</p>
-    <div class="hero__cta reveal">
-      <a class="link-btn" href="mailto:ripaldialdo001@gmail.com">ripaldialdo001@gmail.com</a>
-      <a class="link-btn link-btn--dim" href="https://github.com/RivaldiDev" target="_blank" rel="noopener">github.com/RivaldiDev</a>
-    </div>
+    <ContactButtons client:visible />
   </section>

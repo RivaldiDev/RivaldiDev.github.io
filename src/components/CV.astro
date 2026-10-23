@@ -1,16 +1,22 @@
 ---
 import cv from "@/data/cv.json";
 import Chip from "@/components/Chip.astro";
+import CvTitle from "@/components/islands/CvTitle";
+import SummaryLead from "@/components/islands/SummaryLead";
+import CvStats from "@/components/islands/CvStats";
+import PreviewFrame from "@/components/islands/PreviewFrame";
+import WorkWithMe from "@/components/islands/WorkWithMe";
 const mClass = (m: string) => (m ? `maturity m-${m}` : "maturity");
 ---
 <section class="section cv" id="cv">
   <p class="section__index mono reveal">02 CV</p>
-  <h2 class="section__title reveal">The last 60 days</h2>
+  <CvTitle client:visible text="The last 60 days" />
   <p class="section__sub reveal">What I built and shipped from September to October 2026, with real previews. Updated 23 Oct 2026.</p>
 
   <section class="cv-sec reveal" id="summary">
     <h2 class="cv-sec__title">Summary</h2>
-    <p class="cv-lead" set:html={cv.summary} />
+    <SummaryLead client:visible />
+    <CvStats client:visible />
   </section>
 
   <section class="cv-sec reveal" id="capabilities">
@@ -41,10 +47,9 @@ const mClass = (m: string) => (m ? `maturity m-${m}` : "maturity");
             <div class="cv-item__stack">{w.stack.map((l) => <Chip label={l} />)}</div>
           </div>
           <figure class="cv-shot">
-            <div class="cv-shot__frame">
-              <div class="cv-shot__bar"><i></i><i></i><i></i><span>{w.shot.bar}</span></div>
+            <PreviewFrame client:visible bar={w.shot.bar}>
               <img src={w.shot.src} alt={w.shot.alt} loading="lazy" width="1280" height="800" />
-            </div>
+            </PreviewFrame>
           </figure>
         </article>
       ))}
@@ -74,6 +79,6 @@ const mClass = (m: string) => (m ? `maturity m-${m}` : "maturity");
   </section>
 
   <div class="cv-foot reveal">
-    <a class="link-btn" href="mailto:ripaldialdo001@gmail.com?subject=Project%20inquiry">Work with me</a>
+    <WorkWithMe client:visible />
   </div>
 </section>
