@@ -18,22 +18,22 @@ const I18N = {
     "nav.contact": "Kontak",
     "hero.eyebrow": "Portofolio",
     "hero.title": "Membangun web baru,<br>bersama <em>agen AI</em>.",
-    "hero.lead": "Saya <strong>Rivaldi</strong> — developer dari Indonesia. Dasbor onchain, alat berbasis AI, dan eksperimen web3: dirakit cepat, dirilis rapi.",
+    "hero.lead": "Saya <strong>Rivaldi</strong>, developer dari Indonesia. Saya membangun dasbor onchain, alat berbasis AI, dan eksperimen web3, lalu merilisnya dengan cepat dan rapi.",
     "hero.cta1": "Lihat proyek ↓",
     "hero.cta2": "Buka terminal →",
     "about.index": "01 Identitas",
-    "about.title": "Tiga mode. Satu operator.",
-    "mode1.body": "Selera di atas boilerplate. Saya menentukan arah, mengkurasi hasil, dan memolesnya sampai terasa tepat. Kecepatan berpikir menjadi kecepatan merilis.",
-    "mode2.body": "Alur kerja saya adalah armada agen: meriset, menulis, mereview, dan men-deploy sementara saya mengarahkan. Niat manusia, eksekusi mesin.",
-    "mode3.body": "Membangun di tempat nilai bisa diprogram. Analitik DeFi, blockchain explorer, dan perkakas NFT — membaca chain dan mengubahnya menjadi antarmuka yang berguna.",
+    "about.title": "Cara saya bekerja",
+    "mode1.body": "Saya menentukan arah, mengkurasi hasil kerja agen, dan memolesnya sampai terasa tepat. Sebagian besar waktu saya habis untuk selera dan penilaian, bukan boilerplate.",
+    "mode2.body": "Sebuah tim agen coding meriset, menulis, mereview, dan men-deploy sementara saya mengarahkan dan memeriksa hasilnya.",
+    "mode3.body": "Saya membangun analitik DeFi, blockchain explorer, dan perkakas NFT yang membaca chain dan mengubahnya menjadi antarmuka yang bisa dipakai orang.",
     "projects.index": "03 Karya",
     "projects.title": "Langsung dari GitHub",
-    "projects.sub": "Daftar ini dirender dari API GitHub setiap kali halaman dimuat — selalu terbaru, tanpa perawatan.",
+    "projects.sub": "Daftar ini dimuat dari API GitHub setiap kali halaman dibuka, jadi selalu terbaru tanpa perawatan.",
     "filter.all": "semua",
     "terminal.index": "04 Interaktif",
     "terminal.title": "Bicara dengan mesin",
-    "terminal.sub": "Shell sungguhan. Coba <code>help</code> — atau main <code>snake</code> dan <code>donut</code>.",
-    "terminal.win": "rivaldi.dev — terminal",
+    "terminal.sub": "Shell yang benar-benar jalan. Coba <code>help</code>, atau main <code>snake</code> dan <code>donut</code>.",
+    "terminal.win": "rivaldi.dev terminal",
     "contact.index": "05 Kontak",
     "contact.title": "Punya ide?<br><em>Mari kita wujudkan.</em>",
     "contact.sub": "Terbuka untuk kolaborasi, proyek lepas, dan eksperimen onchain yang menarik.",
@@ -41,8 +41,8 @@ const I18N = {
     "footer.right": "Astro, GSAP dan animate-ui, disajikan dari VPS saya",
     "palette.hint": "↑↓ navigasi · ⏎ jalankan · esc tutup",
     "palette.placeholder": "Ketik perintah…",
-    "proj.noDesc": "Tanpa deskripsi — kodenya berbicara sendiri.",
-    "grid.error": `Batas API GitHub tercapai — lihat proyek langsung di <a href="https://github.com/${GH_USER}?tab=repositories" target="_blank" rel="noopener">github.com/${GH_USER}</a>`,
+    "proj.noDesc": "Tanpa deskripsi. Lihat kodenya.",
+    "grid.error": `Batas API GitHub tercapai. Lihat proyek langsung di <a href="https://github.com/${GH_USER}?tab=repositories" target="_blank" rel="noopener">github.com/${GH_USER}</a>`,
     dateLocale: "id-ID",
   },
   en: {
@@ -51,22 +51,22 @@ const I18N = {
     "nav.contact": "Contact",
     "hero.eyebrow": "Portfolio",
     "hero.title": "Building the new web,<br>with <em>AI agents</em>.",
-    "hero.lead": "I'm <strong>Rivaldi</strong> — a developer from Indonesia. Onchain dashboards, AI-powered tools, and web3 experiments: built fast, shipped clean.",
+    "hero.lead": "I'm <strong>Rivaldi</strong>, a developer from Indonesia. I build onchain dashboards, AI tools and web3 experiments, and I ship them fast and clean.",
     "hero.cta1": "View projects ↓",
     "hero.cta2": "Open terminal →",
     "about.index": "01 Identity",
-    "about.title": "Three modes. One operator.",
-    "mode1.body": "Taste over boilerplate. I set the direction, curate the output, and polish until it feels right. Speed of thought becomes speed of shipping.",
-    "mode2.body": "My workflow is a fleet of agents: researching, writing, reviewing, and deploying while I direct. Human intent, machine execution.",
-    "mode3.body": "Building where value is programmable. DeFi analytics, blockchain explorers, and NFT tooling — reading the chain and turning it into useful interfaces.",
+    "about.title": "How I work",
+    "mode1.body": "I set the direction, curate what the agents produce and polish it until it feels right. Most of my time goes to taste and judgment, not boilerplate.",
+    "mode2.body": "A team of coding agents researches, writes, reviews and deploys while I direct them and check the output.",
+    "mode3.body": "I build DeFi analytics, blockchain explorers and NFT tools that read the chain and turn it into interfaces people can use.",
     "projects.index": "03 Work",
     "projects.title": "Live from GitHub",
-    "projects.sub": "This grid renders itself from the GitHub API on every page load — always current, zero maintenance.",
+    "projects.sub": "This grid loads from the GitHub API on every visit, so it is always current without any maintenance.",
     "filter.all": "all",
     "terminal.index": "04 Interactive",
     "terminal.title": "Talk to the machine",
-    "terminal.sub": "An actual shell. Try <code>help</code> — or play <code>snake</code> and <code>donut</code>.",
-    "terminal.win": "rivaldi.dev — terminal",
+    "terminal.sub": "A working shell. Try <code>help</code>, or play <code>snake</code> and <code>donut</code>.",
+    "terminal.win": "rivaldi.dev terminal",
     "contact.index": "05 Contact",
     "contact.title": "Got an idea?<br><em>Let's build it.</em>",
     "contact.sub": "Open to collaborations, freelance work, and interesting onchain experiments.",
@@ -74,8 +74,8 @@ const I18N = {
     "footer.right": "Astro, GSAP and animate-ui, served from my VPS",
     "palette.hint": "↑↓ navigate · ⏎ run · esc close",
     "palette.placeholder": "Type a command…",
-    "proj.noDesc": "No description — the code speaks for itself.",
-    "grid.error": `GitHub API rate limit hit — projects live at <a href="https://github.com/${GH_USER}?tab=repositories" target="_blank" rel="noopener">github.com/${GH_USER}</a>`,
+    "proj.noDesc": "No description. Read the code.",
+    "grid.error": `GitHub API rate limit hit. The projects are at <a href="https://github.com/${GH_USER}?tab=repositories" target="_blank" rel="noopener">github.com/${GH_USER}</a>`,
     dateLocale: "en-US",
   },
 };
@@ -432,7 +432,7 @@ $("#filters").addEventListener("click", (e) => {
 
   const SHELL = {
     id: {
-      intro: `<span class="t-dim">rivaldi.dev shell — ketik <span class="t-ok">help</span> untuk mulai.</span>`,
+      intro: `<span class="t-dim">rivaldi.dev shell. Ketik <span class="t-ok">help</span> untuk mulai.</span>`,
       help:
         `<span class="t-hi">perintah tersedia:</span>\n` +
         `  <span class="t-ok">whoami</span>     — tentang saya\n` +
@@ -445,7 +445,7 @@ $("#filters").addEventListener("click", (e) => {
         `  <span class="t-ok">clear</span>      — bersihkan layar\n` +
         `  <span class="t-dim">…dan beberapa yang tidak terdokumentasi.</span>`,
       whoami:
-        `<span class="t-hi">Rivaldi</span> — vibecoder · full AI agentic · web3 enthusiast\n` +
+        `<span class="t-hi">Rivaldi</span>, vibecoder, full AI agentic, web3 enthusiast\n` +
         `<span class="t-dim">lokasi:</span> Indonesia\n` +
         `<span class="t-dim">filosofi:</span> arahkan agen, kurasi hasil, rilis dengan rapi.`,
       stack:
@@ -457,15 +457,15 @@ $("#filters").addEventListener("click", (e) => {
         `<span class="t-ok">email:</span>  <a href="mailto:ripaldialdo001@gmail.com">ripaldialdo001@gmail.com</a>\n` +
         `<span class="t-ok">github:</span> <a href="https://github.com/${GH_USER}" target="_blank" rel="noopener">github.com/${GH_USER}</a>`,
       snakeHint: "panah/WASD · q keluar",
-      snakeOver: (s) => `<span class="t-hi">permainan selesai — skor: ${s}</span> <span class="t-dim">· ketik snake untuk main lagi</span>`,
+      snakeOver: (s) => `<span class="t-hi">permainan selesai, skor: ${s}</span> <span class="t-dim">· ketik snake untuk main lagi</span>`,
       donutHint: "tekan tombol apa saja untuk berhenti…",
       syncing: `<span class="t-dim">masih sinkronisasi dengan GitHub… coba lagi sebentar.</span>`,
-      notFound: (c) => `<span class="t-dim">perintah tidak ditemukan: ${c} — coba <span class="t-ok">help</span></span>`,
+      notFound: (c) => `<span class="t-dim">perintah tidak ditemukan: ${c}. Coba <span class="t-ok">help</span></span>`,
       sudo: `<span class="t-dim">akses ditolak. insiden ini akan dilaporkan ke armada agen.</span>`,
-      gm: `<span class="t-hi">gm gm — wagmi.</span>`,
+      gm: `<span class="t-hi">gm gm, wagmi.</span>`,
     },
     en: {
-      intro: `<span class="t-dim">rivaldi.dev shell — type <span class="t-ok">help</span> to begin.</span>`,
+      intro: `<span class="t-dim">rivaldi.dev shell. Type <span class="t-ok">help</span> to begin.</span>`,
       help:
         `<span class="t-hi">available commands:</span>\n` +
         `  <span class="t-ok">whoami</span>     — about me\n` +
@@ -478,7 +478,7 @@ $("#filters").addEventListener("click", (e) => {
         `  <span class="t-ok">clear</span>      — wipe the screen\n` +
         `  <span class="t-dim">…and a few undocumented ones.</span>`,
       whoami:
-        `<span class="t-hi">Rivaldi</span> — vibecoder · full AI agentic · web3 enthusiast\n` +
+        `<span class="t-hi">Rivaldi</span>, vibecoder, full AI agentic, web3 enthusiast\n` +
         `<span class="t-dim">location:</span> Indonesia\n` +
         `<span class="t-dim">philosophy:</span> direct the agents, curate the output, ship it clean.`,
       stack:
@@ -490,12 +490,12 @@ $("#filters").addEventListener("click", (e) => {
         `<span class="t-ok">email:</span>  <a href="mailto:ripaldialdo001@gmail.com">ripaldialdo001@gmail.com</a>\n` +
         `<span class="t-ok">github:</span> <a href="https://github.com/${GH_USER}" target="_blank" rel="noopener">github.com/${GH_USER}</a>`,
       snakeHint: "arrows/WASD · q to quit",
-      snakeOver: (s) => `<span class="t-hi">game over — score: ${s}</span> <span class="t-dim">· type snake to play again</span>`,
+      snakeOver: (s) => `<span class="t-hi">game over, score: ${s}</span> <span class="t-dim">· type snake to play again</span>`,
       donutHint: "press any key to stop…",
       syncing: `<span class="t-dim">still syncing with GitHub… try again in a moment.</span>`,
-      notFound: (c) => `<span class="t-dim">command not found: ${c} — try <span class="t-ok">help</span></span>`,
+      notFound: (c) => `<span class="t-dim">command not found: ${c}. Try <span class="t-ok">help</span></span>`,
       sudo: `<span class="t-dim">access denied. this incident will be reported to the agent fleet.</span>`,
-      gm: `<span class="t-hi">gm gm — wagmi.</span>`,
+      gm: `<span class="t-hi">gm gm, wagmi.</span>`,
     },
   };
 

@@ -1,37 +1,37 @@
 {
-  "summary": "In the last two months I built and shipped <strong>seven products</strong> and a <strong>toolkit of 15 launchpad repos</strong>, all on Solana and Robinhood Chain. An onchain card game, two memecoin launchpads with trading built in, a launch scanner, a tax token site, a chat trading agent and a social trading terminal. Most repos are private. The previews below come from the live sites or from the real code run on my server.",
+  "summary": "In the last two months I built and shipped seven products and a toolkit of 15 launchpad repos, all on Solana and Robinhood Chain: an onchain card game, two memecoin launchpads with trading built in, a launch scanner, a tax token site, a chat trading agent and a social trading terminal. Most repos are private. The previews below come from the live sites or from the real code run on my server.",
   "capabilities": [
     {
       "k": "Onchain payments",
-      "v": "<strong>Pay in native ETH with one signed transaction per action.</strong> Get a quote, sign in the wallet, verify the transfer by hash, run the action, refund if it fails. A double entry ledger for points and ETH where every test checks that the books balance to zero. Markets priced in USD and settled in ETH. USDC payments with x402 for AI tools."
+      "v": "Users pay in native ETH with one signed transaction per action. The app gets a quote, the user signs in the wallet, the server verifies the transfer by hash, runs the action and refunds if it fails. A double entry ledger tracks points and ETH, and every test checks that the books balance to zero. Markets are priced in USD and settled in ETH. AI tools are paid in USDC through x402."
     },
     {
       "k": "Launchpads and liquidity",
-      "v": "<strong>Six launch models, built and documented.</strong> Raydium LaunchLab curves that graduate to CPMM. Orca Whirlpools with the full supply in one locked position and no custom program. Meteora bonding curve to DAMM v2. Doppler on Uniswap v4. Own Solidity curves that graduate into locked Uniswap v3 pools. LayerZero OFT launches on five chains at one USD price."
+      "v": "I have built and documented six launch models: Raydium LaunchLab curves that graduate to CPMM, Orca Whirlpools with the full supply in one locked position and no custom program, Meteora bonding curves that graduate to DAMM v2, Doppler on Uniswap v4, my own Solidity curves that graduate into locked Uniswap v3 pools, and LayerZero OFT launches on five chains at one USD price."
     },
     {
       "k": "Fee flywheels",
-      "v": "Buyback and burn with a cap on price impact. Holder rewards with anti sybil snapshots. Creator bonds with a cliff and a linear unlock. <strong>A 10% tax token that parks USDG in a Morpho vault and spends only the yield on buybacks.</strong>"
+      "v": "After launch the fees can buy back and burn with a cap on price impact, pay holders from snapshot rounds with anti sybil rules, or lock part of the supply as a creator bond with a cliff and a linear unlock. For Karin, a 10% tax goes into a Morpho USDG vault and only the yield buys the token back."
     },
     {
       "k": "AI agents in production",
-      "v": "<strong>Agents that hold wallets and act.</strong> A per coin agent that posts on X, trades its coin, builds the coin website and spends creator fees on buybacks. Chat trading agents with custodial wallets where spend limits, confirm codes and TWAP price guards live in plain code the model cannot change."
+      "v": "I build agents that hold wallets and act. On Crots each coin gets an agent that posts on X, trades the coin, builds its website and spends the creator fees on buybacks. On Altnero, users trade by chatting with a bot that keeps a custodial wallet, and the spend limits, confirm codes and TWAP price guards live in plain code the model cannot change."
     },
     {
       "k": "Trading UX",
-      "v": "Swaps on the site with quotes, USD values, price impact and route before you sign. Jupiter on Solana and Uniswap v4 with Permit2 on Robinhood Chain. Candles, holders, top traders, PnL, leaderboards, watchlists and wallet signed callouts."
+      "v": "Users swap on the site and see the quote, USD value, price impact and route before they sign. Trades go through Jupiter on Solana and Uniswap v4 with Permit2 on Robinhood Chain. The pages show candles, holders, top traders, PnL, leaderboards, watchlists and wallet signed callouts."
     },
     {
       "k": "Game and economy design",
-      "v": "A full card game economy. Packs, level ups, fusion, salvage, a market with escrow bids and expiry, ranked seasons, an arena queue with live players or bots, server side turn based fights, clans, and an oracle that turns real X engagement into card power. A published player book."
+      "v": "For Social Arena I designed the whole card game economy: packs, level ups, fusion, salvage, a market with escrow bids and expiry, ranked seasons, an arena queue with live players or bots, server side turn based fights, clans, and an oracle that turns real X engagement into card power. The rules are published in a player book."
     },
     {
       "k": "Ops and security",
-      "v": "Hardened VPS with ufw, fail2ban, sshd and sysctl. Caddy, systemd units and timers, backups, Cloudflare tunnels. Rate limits per IP with auto bans, password gated sites before launch, admin panels where every route is tested without a session and must return 401, contract audits and Foundry fork tests."
+      "v": "I harden each VPS with ufw, fail2ban, sshd and sysctl, then run the apps under systemd with Caddy, timers, backups and Cloudflare tunnels. Sites get rate limits per IP with auto bans, a password gate before launch, and admin panels where every route is tested without a session and must return 401. Contracts get an audit and Foundry fork tests."
     },
     {
       "k": "How I work",
-      "v": "Spec first. Then a team of coding agents builds, reviews and deploys while I direct and check the output. Every repo ships with an agent skill and a CLAUDE.md so the next build starts from proven code."
+      "v": "I write the spec first. Then a team of coding agents builds, reviews and deploys while I direct them and check the output. Every repo ships with an agent skill and a CLAUDE.md so the next build starts from proven code."
     }
   ],
   "work": [
@@ -40,11 +40,11 @@
       "name": "Crots",
       "when": "Oct 2026",
       "role": "client work, full stack, Solana and Robinhood Chain",
-      "desc": "<strong>A memecoin launchpad and trading terminal where every coin gets an AI agent.</strong> You launch a coin in a wizard. The coin gets a Crot with its own wallets. The Crot earns the creator fees, posts on X, builds the coin website and buys back, burns and locks. You trade the coin on the same site with your own wallet.",
+      "desc": "Crots is a memecoin launchpad and trading terminal where every coin gets an AI agent. You launch a coin in a wizard. The coin gets a Crot with its own wallets. The Crot earns the creator fees, posts on X, builds the coin website and buys back, burns and locks. You trade the coin on the same site with your own wallet.",
       "bullets": [
-        "Raydium LaunchLab, CPMM and Jupiter on Solana. Doppler and Uniswap v4 on Robinhood Chain. One trade adapter interface for both.",
-        "Pulse and screener for new, curve and graduated coins. Token page with chart, holders, top traders and dev trades. Portfolio and leaderboard across both chains.",
-        "Crot websites on crots.fun subdomains served by a Cloudflare Worker. Agent models and tools paid per call with x402 USDC.",
+        "Trades go through Raydium LaunchLab, CPMM and Jupiter on Solana and through Doppler and Uniswap v4 on Robinhood Chain, behind one adapter interface.",
+        "A pulse and a screener list new, curve and graduated coins. The token page shows the chart, holders, top traders and dev trades, and the portfolio and leaderboard cover both chains.",
+        "A Cloudflare Worker serves each Crot's website on a crots.fun subdomain, and the agents pay for models and tools per call with x402 USDC.",
         "The server holds no user keys, only the encrypted keys of the Crot wallets."
       ],
       "stack": [
@@ -70,12 +70,12 @@
       "name": "Social Arena",
       "when": "Sep to Oct 2026",
       "role": "client work, game, economy and chain, Robinhood Chain, 266 commits",
-      "desc": "<strong>A fantasy card game about Crypto Twitter creators, settled onchain.</strong> The cards are the top traders on fomo.family, scored by their real engagement on X. Players open packs, upgrade and fuse cards, trade and bid on a market, and fight Classic and Ranked matches. Packs, fees and the market settle in native ETH with one signed transaction per action.",
+      "desc": "Social Arena is a fantasy card game about Crypto Twitter creators, settled onchain. The cards are the top traders on fomo.family, scored by their real engagement on X. Players open packs, upgrade and fuse cards, trade and bid on a market, and fight Classic and Ranked matches. Packs, fees and the market settle in native ETH with one signed transaction per action.",
       "bullets": [
-        "Double entry ledger for points and ETH. Every test checks that the books balance to zero.",
-        "Payment flow: quote, sign, verify the transfer by hash, run, refund. Payouts from a fee wallet. A supply brake and scheduled jobs for ingest, score commits, floor snapshots, listing expiry and seasons.",
-        "Ranked ladder with seasons, an arena queue with live players or bots, server side turn based fights, clans with a ladder, and events with prize pools.",
-        "Separate admin panel, a player book, a hardened VPS with Caddy, systemd timers and backups."
+        "A double entry ledger tracks points and ETH, and every test checks that the books balance to zero.",
+        "Payments run as quote, sign, verify the transfer by hash, run, refund. A fee wallet pays out, a supply brake limits minting, and scheduled jobs handle ingest, score commits, floor snapshots, listing expiry and seasons.",
+        "Ranked has seasons, an arena queue with live players or bots, server side turn based fights, clans with their own ladder, and events with prize pools.",
+        "It ships with a separate admin panel, a player book, and a hardened VPS with Caddy, systemd timers and backups."
       ],
       "stack": [
         "TypeScript",
@@ -100,12 +100,12 @@
       "name": "rocapad",
       "when": "Oct 2026",
       "role": "client work, SDK, keeper, indexer, web and bot, Solana",
-      "desc": "<strong>A Solana memecoin launchpad built on Orca with no program of its own.</strong> Each coin launches straight into an Orca Whirlpool that holds the whole supply in one locked position. It trades from the first block and creators earn from every trade.",
+      "desc": "rocapad is a Solana memecoin launchpad built on Orca with no program of its own. Each coin launches straight into an Orca Whirlpool that holds the whole supply in one locked position, so it trades from the first block and creators earn from every trade.",
       "bullets": [
-        "TypeScript SDK for launch transactions, pool quotes and swaps, fee collection and split, holder reward allocation, launch validation and account decoders.",
-        "A keeper that collects the fees of every locked position and pays each coin its fee mode, creator, buyback and burn, or holder rewards, with a ledger memo on every transaction.",
-        "Postgres indexer and JSON API with lists, 24h change, charts, trades, milestones, fee ledger, creator earnings, holders and platform stats.",
-        "Next.js app with a live market terminal, creator dashboard and admin. A grammY Telegram bot with custodial wallets and pool trading."
+        "A TypeScript SDK builds the launch transactions, quotes and swaps on the pool, collects and splits fees, allocates holder rewards, validates launches and decodes accounts.",
+        "A keeper collects the fees of every locked position and pays each coin its fee mode (creator, buyback and burn, or holder rewards) with a ledger memo on every transaction.",
+        "A Postgres indexer and JSON API serve lists with 24h change, charts, trades, milestones, the fee ledger, creator earnings, holders and platform stats.",
+        "The Next.js app has a live market terminal, a creator dashboard and an admin. A grammY Telegram bot trades the pools with custodial wallets."
       ],
       "stack": [
         "Next.js",
@@ -126,11 +126,11 @@
       "name": "Smoke Signal",
       "when": "Oct 2026",
       "role": "client work, scanner and site, Robinhood Chain",
-      "desc": "<strong>Scores every new token on the Torch launchpad in seconds.</strong> It reads the fee split, the creator record and the buy flow, and shows the result on a fast ASCII dot site. Tiers are gated by the $SIGNAL balance.",
+      "desc": "Smoke Signal scores every new token on the Torch launchpad within seconds. It reads the fee split, the creator record and the buy flow, and shows the result on an ASCII dot site. The $SIGNAL balance gates the tiers.",
       "bullets": [
-        "One Node process with built in SQLite that uses about 100 MB of RAM. Plain HTML, CSS and JS with no build step.",
-        "WebGL2 ASCII dot field, server sent events for live signals, Telegram channel posts and wallet sign in with viem.",
-        "The scanner backs off when the source is busy. A systemd unit and a Cloudflare tunnel for deploy."
+        "One Node process with built in SQLite runs the whole thing in about 100 MB of RAM. The front end is plain HTML, CSS and JS with no build step.",
+        "A WebGL2 ASCII dot field draws the background, server sent events push live signals, a bot posts to a Telegram channel, and viem handles wallet sign in.",
+        "The scanner backs off when the source is busy. A systemd unit and a Cloudflare tunnel run it in production."
       ],
       "stack": [
         "Node 22",
@@ -151,12 +151,12 @@
       "name": "Karin",
       "when": "Oct 2026",
       "role": "client work, token site, swap and admin, Solidity and web, Robinhood Chain",
-      "desc": "<strong>A tax to yield to buyback token.</strong> Each buy and sell of $KARIN pays a 10% tax in ETH. The treasury changes it to USDG, supplies the Steakhouse USDG vault on Morpho, and spends only the vault yield on buybacks. Each buyback pays the tax again.",
+      "desc": "Karin is a token site where tax becomes yield and yield becomes buybacks. Each buy and sell of $KARIN pays a 10% tax in ETH. The treasury changes it to USDG, supplies the Steakhouse USDG vault on Morpho, and spends only the vault yield on buybacks. Each buyback pays the tax again.",
       "bullets": [
-        "Landing page, swap panel and admin dashboard. The admin controls the contract address, the trade panel and the site gate at runtime.",
-        "Password gated site before launch, enforced on the server, with the same check in Vercel middleware.",
-        "Rate limits per IP, auto bans that grow from 1 hour to 24 hours to 7 days, attack path probes, and bans that survive a restart.",
-        "A live test that simulates a buy and a sell on mainnet without sending transactions."
+        "The site has a landing page, a swap panel and an admin dashboard. The admin changes the contract address, the trade panel and the site gate at runtime.",
+        "Before launch the site sits behind a password, enforced on the server and mirrored in Vercel middleware.",
+        "Each IP gets a rate limit, and repeat offenders are banned for 1 hour, then 24 hours, then 7 days. Probes for attack paths are banned at once, and bans survive a restart.",
+        "A live test simulates a buy and a sell on mainnet without sending transactions."
       ],
       "stack": [
         "Solidity",
@@ -177,11 +177,11 @@
       "name": "Altnero",
       "when": "Oct 2026",
       "role": "client work, chat agent and launchpad, contracts, agent service and web, Robinhood Chain",
-      "desc": "<strong>Two products in one repo. A chat trading agent in the style of Bankr and a launchpad in the style of pump.fun.</strong> Users trade, send, launch tokens and place orders by writing to the bot on Telegram, X, Farcaster, a web terminal or an API. Tokens sell on a bonding curve and graduate into a Uniswap v3 WETH pool. The LP position stays locked forever.",
+      "desc": "Altnero is two products in one repo: a chat trading agent in the style of Bankr and a launchpad in the style of pump.fun. Users trade, send, launch tokens and place orders by writing to the bot on Telegram, X, Farcaster, a web terminal or an API. Tokens sell on a bonding curve and graduate into a Uniswap v3 WETH pool, and the LP position stays locked forever.",
       "bullets": [
-        "Custodial wallets with an encrypted keystore or Privy server wallets. Spend limits, confirm codes, TWAP price guards and a signing journal live in plain code outside the model.",
-        "Foundry contracts for the Launchpad, LaunchToken and deployer, with a deploy script, fork tests and an internal audit in the repo.",
-        "Agent service with channels, a parser, a pipeline, a keeper for limit, stop, DCA and TWAP orders, an indexer, an HTTP API and a CLI."
+        "Each user gets a custodial wallet, as an encrypted keystore or a Privy server wallet. Spend limits, confirm codes, TWAP price guards and a signing journal live in plain code outside the model.",
+        "Foundry contracts cover the Launchpad, LaunchToken and deployer, with a deploy script, fork tests and an internal audit in the repo.",
+        "The agent service has channels, a parser, a pipeline, a keeper for limit, stop, DCA and TWAP orders, an indexer, an HTTP API and a CLI."
       ],
       "stack": [
         "Foundry",
@@ -206,10 +206,10 @@
       "name": "ZeeBonds",
       "when": "Oct 2026",
       "role": "client work, launchpad web app, Solana",
-      "desc": "<strong>A Solana launchpad on Raydium LaunchLab with its own platform config.</strong> Coins launch on LaunchLab bonding curves with platform and creator fees on the curve. They graduate through the Raydium crank into a locked CPMM pool. Creators lock part of their supply before anyone buys.",
+      "desc": "ZeeBonds is a Solana launchpad on Raydium LaunchLab with its own platform config. Coins launch on LaunchLab bonding curves with platform and creator fees on the curve, then graduate through the Raydium crank into a locked CPMM pool. Creators lock part of their supply before anyone buys.",
       "bullets": [
-        "Next.js app with wallet adapter sign in and a React Query data layer. Scripts to create the platform config and smoke test LaunchLab on devnet.",
-        "Listed as a mainnet proof of the Solana launchpad base in my boiler index."
+        "The Next.js app signs users in with wallet adapter and loads data through React Query. Scripts create the platform config and smoke test LaunchLab on devnet.",
+        "It is the mainnet proof of the Solana launchpad base in my boiler index."
       ],
       "stack": [
         "Next.js",
@@ -225,7 +225,7 @@
       }
     }
   ],
-  "boilersLead": "An index repo links fifteen boilers as submodules in four layers. <strong>Network</strong> is the shared chain base. <strong>Tech</strong> is how a coin launches and where its liquidity goes. <strong>Flywheels</strong> are what the fees do after launch. <strong>Design</strong> is the look of the site. Each boiler is a spec, an agent skill and copyable code from a working project, so a new launchpad starts from proven parts.",
+  "boilersLead": "An index repo links fifteen boilers as submodules, sorted into four layers: network (the shared chain base), tech (how a coin launches and where its liquidity goes), flywheels (what the fees do after launch) and design (the look of the site). Each boiler is a spec, an agent skill and copyable code from a working project, so a new launchpad starts from proven parts.",
   "boilers": [
     {
       "name": "solana-launchpad",
